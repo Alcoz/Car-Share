@@ -1,0 +1,113 @@
+@font-face {
+	font-family: "Msuperf";
+	src: url('../fonts/superfonte.ttf');
+}
+
+body{
+  background-color: rgba(151, 163, 205, 0.8);
+  font-family: "Msuperf", Helvetica, Arial, sans-serif;
+}
+
+nav {
+  width: 100%;
+  margin-top: 20px;
+}
+
+ul {
+ padding:0;
+ margin:0;
+ list-style-type:none;
+ margin: 0px;
+ }
+
+img {
+  width: 100%;
+  height: 480px;
+  margin-top: 0px;
+}
+
+ nav>#menu>a {
+  text-decoration:none;
+  color: black;
+ }
+
+ #menu a li {
+   display: inline;
+   padding-left: 20px;
+   padding-top: 18px;
+   padding-right: 20px;
+   padding-bottom: 18px;
+   background-color: rgba(23, 200, 126, 0.2);
+   float: right;
+   font-size: 35px;
+ }
+#menu a#acc li {
+  float: left;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 5px;
+  font-size: 45px;
+
+}
+ #menu a li:hover {
+   background-color: rgba(111, 150, 231, 0.5);
+ }
+#formul {
+  text-align: center;
+}
+
+
+input{
+  background-color: white;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+label, #valider {
+  background-color: rgba(111, 150, 231, 0.5);
+  padding-left: 10px;
+  padding-top: 18px;
+  padding-right: 10px;
+  padding-bottom: 18px;
+}
+
+
+#home{
+  background-image: url('../icons/home.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+}
+
+#curs{
+  background-image: url('../icons/cursor.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+}
+
+#calandar{
+  background-image: url('../icons/calandar.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1
