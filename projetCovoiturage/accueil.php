@@ -26,15 +26,34 @@
         </form>
       </div>
       <div id="toulétraj">
+
         <h2> Les trajet sont la !</h2>
-        <table>
-          <tr>
-            <th>Num Stage</th>
-            <th>Sujet</th>
-            <th>Responsable Entreprise</th>
-            <th>Responsable Pedagogique</th>
-            <th>Prenom étudiant</th>
-          </tr>
+        <?php
+        for($i = 0; $i < 3; i++) {
+          ?>
+          <div class="trajets_classe">
+            <div class="desc_cond">
+              <img src="images/anno.jpeg"> </img>
+              <p> Prénom </p>
+              <p> Age </p>
+              <p> Avis </p>
+            </div>
+            <div class="desc_traj">
+              <ul>
+                <li> Date </li>
+                <li> VILLE_DEP </li>
+                <li> VILLE_ARR </li>
+                <li> ADRESSE_DEPART </li>
+                <li> ADRESSE_ARR </li>
+                <li> PRIX </li>
+              </ul>
+            </div>
+          </div>
+
+        <?php }
+        ?>
+      </div>
+
 
 
     <footer>
