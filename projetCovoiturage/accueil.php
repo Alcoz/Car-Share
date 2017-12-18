@@ -8,7 +8,7 @@
   <body>
       <nav>
         <ul id="menu">
-          <a id="acc" href="accueil.html">  <li> <b> Car-Share </li> </b> </a>
+          <a id="acc" href="accueil.php">  <li> <b> Car-Share </li> </b> </a>
           <a href="blank">  <li>Proposer un trajet  </li> </a>
           <a href="blank">  <li> Inscription  </li> </a>
           <a href="blank">  <li> Connexion </li> </a>
