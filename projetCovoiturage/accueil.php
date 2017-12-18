@@ -8,7 +8,7 @@
   <body>
       <nav>
         <ul id="menu">
-          <a id="acc" href="accueil.php">  <li> <b> Car-Share </li> </b> </a>
+          <a id="acc" href="accueil.php">  <li> Car-Share </li> </a>
           <a href="blank">  <li>Proposer un trajet  </li> </a>
           <a href="blank">  <li> Inscription  </li> </a>
           <a href="blank">  <li> Connexion </li> </a>
@@ -25,29 +25,40 @@
           <input id="valider" type="submit" name = "recherche"/>
         </form>
       </div>
+
+      <?php
+      $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+      $query = $pdo->query("SELECT *
+                            FROM TRAJET
+                            WHERE TYPE = 1
+                            ;"
+                          );
+      $tuples= $query->fetchAll(PDO::FETCH_OBJ);
+      ?>
+
+
       <div id="toulétraj">
 
         <h2> Les trajet sont la !</h2>
         <?php
-        for($i = 0; $i < 3; i++) {
+        foreach ($tuples as $tuple) {
           ?>
           <div class="trajets_classe">
             <div class="desc_cond">
-              <img src="images/anno.jpeg"> </img>
-              <p> Prénom </p>
-              <p> Age </p>
-              <p> Avis </p>
+              <img id="img_uti" src="images/annony.jpeg"> </img>
+              <ul class="coord_uti">
+
             </div>
-            <div class="desc_traj">
+            <div class="part_droite">
               <ul>
-                <li> Date </li>
-                <li> VILLE_DEP </li>
-                <li> VILLE_ARR </li>
-                <li> ADRESSE_DEPART </li>
-                <li> ADRESSE_ARR </li>
-                <li> PRIX </li>
+                <li>  <?php echo $tuple->DATE_DEP ?> </li>
+                <li> <?php echo $tuple->VILLE_DEP ?>  </li>
+                <li>  <?php echo $tuple->VILLE_ARR ?> </li>
+                <li>  <?php echo $tuple->ADRESSE_DEPART ?> </li>
+                <li> <?php echo $tuple->ADRESSE_ARR?>  </li>
+                <li>  <?php echo $tuple->PRIX ?> </li>
               </ul>
-            </div>
+
           </div>
 
         <?php }
