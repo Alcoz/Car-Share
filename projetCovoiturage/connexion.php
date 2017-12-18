@@ -21,7 +21,7 @@ session_start();
           $mail = $_POST['mail'];
           $mdp = $_POST['mdp'];
 
-          $query=$pdo->query("SELECT ID_UTILISATEUR
+          $query=$pdo->query("SELECT *
                               FROM utilisateur
                               WHERE MAIL ='".$mail."' AND MDP='".$mdp."';");
           $rep=$query->fetch();
@@ -32,8 +32,6 @@ session_start();
           else
           {
             $_SESSION['id']=$rep['ID_UTILISATEUR'];
-            echo $_SESSION['id'];
-            echo $rep['ID_UTILISATEUR'];
             header('Location: accueil.html');
           }
         }
