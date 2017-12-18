@@ -32,11 +32,9 @@
   else {
     $query = $pdo->query("SELECT *
                           FROM TRAJET
-                          WHERE VILLE_DEP = ''.$depart
-                          AND VILLE_ARR = ''.$arrive
-                          AND DATE_DEP = ''.$date
-    ;"
-  );
+                          WHERE VILLE_DEP = \"$depart\"
+                          AND VILLE_ARR =  \"$arrive \"
+                          AND DATE_DEP = \"$date\";");
   $tuples= $query->fetchAll(PDO::FETCH_OBJ);
   }
   ?>
