@@ -21,7 +21,6 @@
   $depart = $_POST["depart"];
   $arrive = $_POST["destination"];
   $date  = $_POST["date"];
-  echo $_POST["depart"]. $_POST["destination"] . $_POST["date"];
   if ($_POST["date"] == null) {
     $query = $pdo->query("SELECT *
                           FROM TRAJET
