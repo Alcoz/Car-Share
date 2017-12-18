@@ -13,8 +13,15 @@ session_start();
         <ul id="menu">
           <a id="acc" href="accueil.php">  <li> Car-Share </li> </a>
           <a href="proposertrajat.php">  <li>Proposer un trajet  </li> </a>
-          <a href="blank">  <li> Inscription  </li> </a>
-          <a href="connexion.php">  <li> Connexion </li> </a>
+          <a href="inscription.php">  <li> Inscription  </li> </a>
+          <?php
+          if (isset($_SESSION['id'])) {
+            echo "<a href=\"connexion.php\"> <li> Deconnexion</li> </a>";
+          }
+          else {
+            echo "<a href=\"connexion.php\">  <li> Connexion </li> </a>";
+          }
+           ?>
         </ul>
       </nav>
       <?php

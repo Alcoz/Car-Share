@@ -5,10 +5,25 @@ session_start();
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="stylesheet.css" />
-    <title>Page de connection</title>
+    <link rel="stylesheet" href="styles/stylesheet.css" />
+    <title>Car-Share - Accueil</title>
   </head>
   <body>
+      <nav>
+        <ul id="menu">
+          <a id="acc" href="accueil.php">  <li> Car-Share </li> </a>
+          <a href="proposertrajat.php">  <li>Proposer un trajet  </li> </a>
+          <a href="inscription.php">  <li> Inscription  </li> </a>
+          <?php
+          if (isset($_SESSION['id'])) {
+            echo "<a href=\"connexion.php\"> <li> Deconnexion</li> </a>";
+          }
+          else {
+            echo "<a href=\"connexion.php\">  <li> Connexion </li> </a>";
+          }
+           ?>
+        </ul>
+      </nav>
     <?php
     if (isset($_SESSION['id'])) {
             echo "VOUS ETES CONNECTÉ EN TANT QUE :".$_SESSION['id'];
