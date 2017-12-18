@@ -53,48 +53,7 @@ ul {
  #menu a li:hover {
    background-color: rgba(111, 150, 231, 0.5);
  }
-#formul {
-  text-align: center;
-}
 
-
-input{
-  background-color: white;
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-}
-
-label, #valider {
-  background-color: rgba(111, 150, 231, 0.5);
-  padding-left: 10px;
-  padding-top: 18px;
-  padding-right: 10px;
-  padding-bottom: 18px;
-}
-
-
-#home{
-  background-image: url('../icons/home.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  padding-left: 40px;
-}
-
-#curs{
-  background-image: url('../icons/cursor.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  padding-left: 40px;
-}
-
-#calandar{
-  background-image: url('../icons/calandar.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  padding-left: 40px;
-}
 
 #toulétraj{
 	width: 85%;

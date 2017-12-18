@@ -18,7 +18,7 @@
       <h2> Monte dans la caisse putain </h2>
 
       <div id="formul">
-        <form method="post" action = "traitement.php">
+        <form method="post" action = "resultat.php">
           <label>  Départ :</label> <input id="home" type="text" name = "depart"/>
           <label> Destination :</label> <input  id="curs" type="text" name = "destination"/>
           <label> Date : </label> <input  id="calen" type="date" name = "date"/>
