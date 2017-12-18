@@ -5,7 +5,7 @@ session_start();
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="styles/stylesheet.css" />
+    <link rel="stylesheet" href="styles/connexioncss" />
     <title>Car-Share - Accueil</title>
   </head>
   <body>
@@ -13,12 +13,13 @@ session_start();
         <ul id="menu">
           <a id="acc" href="accueil.php">  <li> Car-Share </li> </a>
           <a href="proposertrajat.php">  <li>Proposer un trajet  </li> </a>
-          <a href="inscription.php">  <li> Inscription  </li> </a>
           <?php
           if (isset($_SESSION['id'])) {
             echo "<a href=\"connexion.php\"> <li> Deconnexion</li> </a>";
           }
           else {
+            echo "<a href=\"inscription.php\">  <li> Inscription  </li> </a>";
+
             echo "<a href=\"connexion.php\">  <li> Connexion </li> </a>";
           }
            ?>

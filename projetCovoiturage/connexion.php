@@ -13,12 +13,13 @@ session_start();
         <ul id="menu">
           <a id="acc" href="accueil.php">  <li> Car-Share </li> </a>
           <a href="proposertrajat.php">  <li>Proposer un trajet  </li> </a>
-          <a href="inscription.php">  <li> Inscription  </li> </a>
           <?php
           if (isset($_SESSION['id'])) {
             echo "<a href=\"connexion.php\"> <li> Deconnexion</li> </a>";
           }
           else {
+            echo "<a href=\"inscription.php\">  <li> Inscription  </li> </a>";
+
             echo "<a href=\"connexion.php\">  <li> Connexion </li> </a>";
           }
            ?>
@@ -64,7 +65,7 @@ session_start();
         echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
         echo "<label> Adresse mail </label> <input class=\"connex\" type='text' name='mail' \>";
         echo "<label> Mot de Passe </label> <input type='password' name='mdp'/>";
-        echo "<input type='submit' value='Connection'/>";
+        echo "<input type='submit' value='Connexion'/>";
 
       }
       elseif (isset($_POST['deco'])) {
