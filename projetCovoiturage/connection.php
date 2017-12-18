@@ -1,8 +1,7 @@
-<!Doctype html>
 <?php
 session_start();
-
  ?>
+<!Doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -11,45 +10,39 @@ session_start();
   </head>
   <body>
     <div class="connect">
-    <h2> Connection </h2>
       <?php
         try{
-          $dsn = "mysql:host=prodpeda-venus;dbname=bdarnala";
-          $pdo = new PDO($dsn,"bdarnala","mdp12345",array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+          $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '');
         }catch(Exception $e){
           die('Erreur : '.$e->getMessage());
         }
 
-        class Utilisateur{
-          private $nom = "";
-          private $prenom = "";
+        if(isset($_POST['mail']) AND isset($_POST['mdp'])){
+          $mail = $_POST['mail'];
+          $mdp = $_POST['mdp'];
 
-          public function __construct($mail){
-            $query=$pdo->query("SELECT *
-                                FROM UTILISATEUR
-                                WHERE MAIL = $mail;");
-            $tuple=$query->fetch();
-            $this->nom = $tuple->nom;
-            $this->prenom = $tuple->prenom;
+          $query=$pdo->query("SELECT ID_UTILISATEUR
+                              FROM utilisateur
+                              WHERE MAIL ='".$mail."' AND MDP='".$mdp."';");
+          $rep=$query->fetch();
+          if(!$rep)
+          {
+            echo "<h3>Le nom d'utilisateur ou le mot de passe est incorrect</h3>";
+          }
+          else
+          {
+            $_SESSION['id']=$rep['ID_UTILISATEUR'];
+            echo $_SESSION['id'];
+            echo $rep['ID_UTILISATEUR'];
+            header('Location: accueil.html');
           }
         }
 
-        $utilisateur = 'NULL';
-
-        if(isset($_POST['connection'])){
-          $query=$pdo->query("SELECT MAIL,MDP
-                              FROM UTILISATEUR
-                              WHERE MAIL =\'$_POST['mail']\';");
-          $tuple=$query->fetch();
-
-          if(is_null($tuple) || $POST['mail']!=$tuple->MAIL || $POST['mdp']!=$tuple->MDP){
-            echo "<h3>Le nom d'utilisateur ou le mot de passe est incorrect</h3>"
-          } else {
-            $utilisateur = new Utilisateur($POST['mail']);
-          }
-        }
-        $_SESSION['Utilisateur'] = $utilisateur;
-
+        echo "<h2>Connection<h2>";
+        echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
+        echo "<input type='text' name='mail' \>";
+        echo "<input type='password' name='mdp'/>";
+        echo "<input type='submit' value='Connection'/>";
       ?>
     </div>
   </body>
