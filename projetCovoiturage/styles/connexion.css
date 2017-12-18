@@ -73,3 +73,10 @@ ul {
 .connex{
 	margin-right: 30%;
 }
+
+
+#formul{
+	margin: 5%;
+	padding: 2%;
+	background-color: rgba(217,203,184,0.6);
+}
