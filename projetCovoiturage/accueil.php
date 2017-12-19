@@ -15,7 +15,7 @@ session_start();
           <?php
           if (isset($_SESSION['id'])) {
             echo "<a href=\"connexion.php\"> <li> Deconnexion</li> </a>";
-            echo "<a href=\"proposertrajat.php\">  <li>Proposer un trajet  </li> </a>";
+            echo "<a href=\"proposition.php\">  <li>Proposer un trajet  </li> </a>";
             echo "<a href=\"profil.php\">  <li>Mon profil  </li> </a>";
           }
           else {
@@ -36,7 +36,7 @@ session_start();
 
       <div id="formul">
         <form method="post" action = "resultat.php">
-          <label>  Départ :</label> <input id="home" type="text" name = "depart"/>
+          <label> Départ :</label> <input id="home" type="text" name = "depart"/>
           <label> Destination :</label> <input  id="curs" type="text" name = "destination"/>
           <label> Date : </label> <input  id="calen" type="date" name = "date"/>
           <input id="valider" type="submit" name = "recherche"/>
