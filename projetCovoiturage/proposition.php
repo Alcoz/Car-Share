@@ -27,20 +27,20 @@ session_start();
           $date_dep = $_POST['date_dep'];
           $id_voiture = $_POST['id_voiture'];
 
-          $pdo->exec("INSERT INTO TRAJET(TYPE, VILLE_DEP, ADRESSE_DEPART, VILLE_ARR, ADRESSE_ARR, DISTANCE, PRIX, DATE_DEP, DISPONIBLE, ID_VOITURE) VALUES(0,'".$ville_dep."','".$ad_dep."','".$ville_arr."','".$ad_arr."',".$distance.",'".$prix."','".$date_dep.", 0,".$id_voiture.");");
+          $pdo->exec("INSERT INTO TRAJET(TYPE, VILLE_DEP, ADRESSE_DEPART, VILLE_ARR, ADRESSE_ARR, DISTANCE, PRIX, DATE_DEP, DISPONIBLE, ID_VOITURE, ID_CONDUCTEUR) VALUES(TRUE,'".$ville_dep."','".$ad_dep."','".$ville_arr."','".$ad_arr."',".$distance.",".$prix.",".$date_dep.", 0,".$id_voiture.",".$_SESSION['id'].");");
           header('Location: accueil.php');
         }
 
         echo "<h2>Inscription<h2>";
         echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
-        echo "<input type='text' name='ville_dep' \>";
-        echo "<input type='text' name='ad_dep' \>";
-        echo "<input type='text' name='ville_arr' \>";
-        echo "<input type='text' name='ad_arr' \>";
-        echo "<input type='number' name='distance'/>";
-        echo "<input type='number' name='prix'/>";
-        echo "<input type='date' name='date_dep' \>";
-        echo "<input type='number' name='id_voiture' \>";
+        echo "Ville de depart<input type='text' name='ville_dep' \></br>";
+        echo "Adresse de depart<input type='text' name='ad_dep' \></br>";
+        echo "Ville d'arrivée<input type='text' name='ville_arr' \></br>";
+        echo "Adresse d'arrivée<input type='text' name='ad_arr' \></br>";
+        echo "Distance<input type='number' name='distance'/></br>";
+        echo "Prix<input type='number' name='prix'/></br>";
+        echo "Date de depart<input type='date' name='date_dep' \></br>";
+        echo "Voiture<input type='number' name='id_voiture' \></br>";
         echo "<input type='submit' value='Propositon'/>";
       ?>
     </div>
