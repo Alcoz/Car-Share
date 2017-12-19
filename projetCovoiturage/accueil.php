@@ -10,8 +10,8 @@
         <ul id="menu">
           <a id="acc" href="accueil.php">  <li> Car-Share </li> </a>
           <a href="blank">  <li>Proposer un trajet  </li> </a>
-          <a href="blank">  <li> Inscription  </li> </a>
-          <a href="blank">  <li> Connexion </li> </a>
+          <a href="inscription.php">  <li> Inscription  </li> </a>
+          <a href="connexion.php">  <li> Connexion </li> </a>
         </ul>
       </nav>
       <img id="imagee" src="images/paysage.jpg"> </img>

@@ -32,7 +32,7 @@ session_start();
           else
           {
             $_SESSION['id']=$rep['ID_UTILISATEUR'];
-            header('Location: accueil.html');
+            header('Location: accueil.php');
           }
         }
 

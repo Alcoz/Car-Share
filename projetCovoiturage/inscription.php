@@ -6,7 +6,7 @@ session_start();
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="stylesheet.css" />
-    <title>Page de connection</title>
+    <title>Page de inscription</title>
   </head>
   <body>
     <div class="inscription">
@@ -18,20 +18,25 @@ session_start();
         }
 
         if(isset($_POST['nom']) AND isset($_POST['prenom'])  AND isset($_POST['age']) AND isset($_POST['SEXE']) AND isset($_POST['mail']) AND isset($_POST['mdp'])){
+          $nom = $_POST['nom'];
+          $prenom = $_POST['prenom'];
+          $sexe = $_POST['SEXE'];
+          $age = $_POST['age'];
           $mail = $_POST['mail'];
+          $mdp = $_POST['mdp'];
+
           $query=$pdo->query("SELECT *
                               FROM utilisateur
                               WHERE MAIL ='".$mail."';");
           $rep=$query->fetch();
-          if($rep)
+          if(!$rep)
           {
-            echo "<h3>L'adresse mail rentrée est déjà utilisée </h3>";
+            $pdo->exec("INSERT INTO UTILISATEUR(NOM, PRENOM, AGE, SEXE, MAIL, MDP, ETAT, NOTE) VALUES('".$nom."','".$prenom."',".$age.",'".$sexe."','".$mail."','".$mdp."',FALSE,NULL);");
+            header('Location: connexion.php');
           }
           else
           {
-            echo "inscription reussi";
-            $bdd->exec("INSERT INTO UTILISATEUR(NOM, PRENOM, AGE, SEXE, MAIL, MDP) VALUES('".$_POST['nom']."','".$_POST['prenom']."','".$_POST['age']."','".$_POST['mail']."','".$_POST['mdp']."');");
-            header('Location: connexion.php');
+            echo "<h3>L'adresse mail rentrée est déjà utilisée </h3>";
           }
         }
 
