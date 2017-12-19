@@ -80,7 +80,7 @@ session_start();
 
         ?>
       </div>
-      <div id="traj">
+      <div id="traj_cond">
         <h3> Vos trajets en tant que conducteur </h3>
         <?php
         $query4 = $pdo->query("SELECT *
@@ -101,6 +101,30 @@ session_start();
             </ul>
 
           </div>
+        </div>
+        <div id="traj_pass">
+          <h3> Vos trajets en tant que passager </h3>
+          <?php
+          $query4 = $pdo->query("SELECT *
+                                FROM TRAJET
+                                WHERE ID_CONDUCTEUR = \"$id\" ;");
+          $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
+          foreach ($tuples4 as $tuple4) {
+            ?>
+
+            <div class="label">
+              <ul>
+                <li>  <?php echo $tuple4->DATE_DEP ?> </li>
+                <li>  <?php echo $tuple4->VILLE_DEP ?>  </li>
+                <li>  <?php echo $tuple4->VILLE_ARR ?> </li>
+                <li>  <?php echo $tuple4->ADRESSE_DEPART ?> </li>
+                <li>  <?php echo $tuple4->ADRESSE_ARR?>  </li>
+                <li>  <?php echo $tuple4->PRIX ?> </li>
+              </ul>
+
+            </div>
+          </div>
+
 
         <?php } ?>
 
