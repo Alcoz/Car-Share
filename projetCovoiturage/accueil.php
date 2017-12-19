@@ -63,8 +63,8 @@ session_start();
             <div class="traj_type">
               <ul>
                 <li> Ville de départ :  <?php echo $tuple->VILLE_DEP ?>  </li>
-                <li> Ville d'arrivée : <?php echo $tuple->VILLE_ARR ?> </li>
-                <li> Prix :  <?php echo $tuple->PRIX ?> </li>
+                <li id="mil"> Ville d'arrivée : <?php echo $tuple->VILLE_ARR ?> </li>
+                <li id="drte"> Prix :  <?php echo $tuple->PRIX ?> </li>
               </ul>
 
           </div>
