@@ -47,10 +47,6 @@ session_start();
           $id_cond = $_SESSION['id'];
 
 
-          $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-
-
-
           $query = $pdo->exec("INSERT INTO TRAJET (TYPE, VILLE_DEP, ADRESSE_DEPART, VILLE_ARR, ADRESSE_ARR, DISTANCE, PRIX, DATE_DEP, DISPONIBLE, ID_VOITURE, ID_CONDUCTEUR)
                   VALUES ('1', '$ville_dep', '$ad_dep', '$ville_arr', '$ad_arr', '$distance', '$prix', '$date_dep', '1', '$id_voiture', '$id_cond');");
           header('Location: accueil.php');
