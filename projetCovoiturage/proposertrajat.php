@@ -5,7 +5,7 @@ session_start();
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="styles/connexion.css.css" />
+    <link rel="stylesheet" href="styles/connexion.css" />
     <title>Car-Share - Accueil</title>
   </head>
   <body>
