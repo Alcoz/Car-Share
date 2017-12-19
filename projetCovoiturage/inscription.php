@@ -5,13 +5,8 @@ session_start();
 <html>
   <head>
     <meta charset="utf-8" />
-<<<<<<< HEAD
     <link rel="stylesheet" href="styles/stylesheet.css" />
     <title>Car-Share - Accueil</title>
-=======
-    <link rel="stylesheet" href="stylesheet.css" />
-    <title>Page de inscription</title>
->>>>>>> d6c4553b24da14e86eda658f87eb390d33b74be7
   </head>
   <body>
       <nav>

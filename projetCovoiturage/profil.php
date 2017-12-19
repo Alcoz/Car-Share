@@ -19,4 +19,18 @@ session_start();
            ?>
         </ul>
       </nav>
-      
+      <div id="profil">
+        <h2> Votre profil </h2>
+        <ul>
+          <?php
+          $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+          $id = $_SESSION['id'];
+          $query = $pdo->query("SELECT *
+                                  FROM UTILISATEUR
+                                  WHERE ID_UTILISATEUR = \"$id\"
+                                  ;");
+          $tuples= $query->fetchAll(PDO::FETCH_OBJ);
+          }
+
+          
+           ?>
