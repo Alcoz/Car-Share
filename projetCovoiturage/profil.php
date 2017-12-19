@@ -107,8 +107,10 @@ session_start();
               <h3> Vos trajets en tant que passager </h3>
               <?php
               $query4 = $pdo->query("SELECT *
-                FROM TRAJET
-                WHERE ID_CONDUCTEUR = \"$id\" ;");
+                FROM TRAJET,FAIT_TRAJET
+                WHERE TRAJET.ID_TRAJET=FAIT_TRAJET.ID_TRAJET
+                AND ID_PASSAGER=\"$id\"
+                AND ID_CONDUCTEUR!=\"$id\";");
                 $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
                 foreach ($tuples4 as $tuple4) {
                   ?>
