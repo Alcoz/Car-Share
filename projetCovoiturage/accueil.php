@@ -12,10 +12,10 @@ session_start();
       <nav>
         <ul id="menu">
           <a id="acc" href="accueil.php">  <li> Car-Share </li> </a>
-          <a href="proposertrajat.php">  <li>Proposer un trajet  </li> </a>
           <?php
           if (isset($_SESSION['id'])) {
             echo "<a href=\"connexion.php\"> <li> Deconnexion</li> </a>";
+            echo "<a href=\"proposertrajat.php\">  <li>Proposer un trajet  </li> </a>";
           }
           else {
             echo "<a href=\"inscription.php\">  <li> Inscription  </li> </a>";
