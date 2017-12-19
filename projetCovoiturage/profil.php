@@ -5,7 +5,7 @@ session_start();
 <html>
 <head>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="styles/stylesheet.css" />
+  <link rel="stylesheet" href="styles/profil.css" />
   <title>Car-Share - Accueil</title>
 </head>
 <body>
@@ -25,8 +25,10 @@ session_start();
       ?>
     </ul>
   </nav>
+  <div id="corps_menu">
+  </div>
   <div id="profil">
-    <h2> Votre profil </h2>
+    <h2> <u> Votre profil </u>  :</h2>
     <ul>
       <?php
       $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
@@ -41,27 +43,40 @@ session_start();
           echo "<li> Nom :  $tuple->NOM </li>";
           echo "<li> Age:  $tuple->AGE </li>";
           echo "<li> Mail :  $tuple->MAIL </li>";
-          echo "<li> Note : $tuple->NOTE </li>";
+          echo "<li> Note : ";
+          if ($tuple->NOTE == null) {
+            echo "vous n'avez pas assez d'avis";
+          }
+          else {
+            echo $tuple->NOTE." </li>";
+          }
         }
         ?>
       </ul>
     </div>
     <div id="avis">
+      <h3> Vos avis </h3>
       <?php
-      echo "<p> $id </p>";
-      $query = $pdo->query("SELECT *
+      $query2 = $pdo->query("SELECT *
         FROM AVIS
-        WHERE ID_CONDUCTEUR = $id ;");
-        $tuples2= $query->fetchAll(PDO::FETCH_OBJ);
+        WHERE ID_CONDUCTEUR = \"$id\" ;");
+        $tuples2= $query2->fetchAll(PDO::FETCH_OBJ);
 
-        foreach ($tuples2 as $tuple2) {
+        foreach ($tuples2 as $tuple2){
+
+        $query3 = $pdo->query("SELECT *
+          FROM UTILISATEUR
+          WHERE ID_UTILISATEUR = \"$tuple2->ID_PASSAGER\" ;");
+          $tuples3= $query3->fetchAll(PDO::FETCH_OBJ);
+          foreach ($tuples3 as $tuple3) {
           ?>
-          <div id="avi">
-            <h3> Utilisateur : <?php $tuple2->ID_PASSAGER ?> </h3>
-            <p> Commentaire : <?php $tuple2->COMMENTAIRE ?> </p>
+          <div class="avi">
+            <h3>  <?php echo "$tuple3->PRENOM"; ?> </h3>
+            <p> Commentaire : <?php echo "$tuple2->COMMENTAIRE"; ?> </p>
           </div>
           <?php
         }
+      }
 
         ?>
       </div>
