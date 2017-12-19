@@ -27,9 +27,8 @@ session_start();
           $date_dep = $_POST['date_dep'];
           $id_voiture = $_POST['id_voiture'];
 
-          $pdo->exec("INSERT INTO TRAJET(TYPE, VILLE_DEP, AGE, SEXE, MAIL, MDP, ETAT, NOTE) VALUES('".$nom."','".$prenom."',".$age.",'".$sexe."','".$mail."','".$mdp."',FALSE,NULL);");
-          header('Location: connexion.php');
-
+          $pdo->exec("INSERT INTO TRAJET(TYPE, VILLE_DEP, ADRESSE_DEPART, VILLE_ARR, ADRESSE_ARR, DISTANCE, PRIX, DATE_DEP, DISPONIBLE, ID_VOITURE) VALUES(0,'".$ville_dep."','".$ad_dep."','".$ville_arr."','".$ad_arr."',".$distance.",'".$prix."','".$date_dep.", 0,".$id_voiture.");");
+          header('Location: accueil.php');
         }
 
         echo "<h2>Inscription<h2>";

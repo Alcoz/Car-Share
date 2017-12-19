@@ -65,10 +65,10 @@ session_start();
           <div class="part_droite">
             <ul>
               <li>  <?php echo $tuple->DATE_DEP ?> </li>
-              <li> <?php echo $tuple->VILLE_DEP ?>  </li>
+              <li>  <?php echo $tuple->VILLE_DEP ?>  </li>
               <li>  <?php echo $tuple->VILLE_ARR ?> </li>
               <li>  <?php echo $tuple->ADRESSE_DEPART ?> </li>
-              <li> <?php echo $tuple->ADRESSE_ARR?>  </li>
+              <li>  <?php echo $tuple->ADRESSE_ARR?>  </li>
               <li>  <?php echo $tuple->PRIX ?> </li>
             </ul>
 
