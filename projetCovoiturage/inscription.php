@@ -9,6 +9,11 @@ session_start();
     <title>Page de inscription</title>
   </head>
   <body>
+    <?php
+    if (isset($_SESSION['id'])) {
+            echo "VOUS ETES CONNECTÉ EN TANT QUE :".$_SESSION['id'];
+    }
+     ?>
     <div class="inscription">
       <?php
         try{

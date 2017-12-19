@@ -18,35 +18,24 @@
 
   <?php
   $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-
-  echo $_POST["depart"]. $_POST["destination"] . $_POST["date"];
+  $depart = $_POST["depart"];
+  $arrive = $_POST["destination"];
+  $date  = $_POST["date"];
   if ($_POST["date"] == null) {
-      $query = $pdo->query("SELECT *
-      FROM TRAJET
-      WHERE VILLE_DEP = $_POST["date"]
-      ;"
-    );
-    $tuples= $query->fetchAll(PDO::FETCH_OBJ);
+    $query = $pdo->query("SELECT *
+                          FROM TRAJET
+                          WHERE VILLE_DEP = \"$depart\"
+                          AND VILLE_ARR =  \"$arrive \";");
+  $tuples= $query->fetchAll(PDO::FETCH_OBJ);
   }
-
-  if ($_POST["date"] == null) {
-      $query = $pdo->query("SELECT *
-      FROM TRAJET
-      WHERE VILLE_DEP = $_POST["date"]
-      ;"
-    );
-    $tuples= $query->fetchAll(PDO::FETCH_OBJ);
+  else {
+    $query = $pdo->query("SELECT *
+                          FROM TRAJET
+                          WHERE VILLE_DEP = \"$depart\"
+                          AND VILLE_ARR =  \"$arrive \"
+                          AND DATE_DEP = \"$date\";");
+  $tuples= $query->fetchAll(PDO::FETCH_OBJ);
   }
-
-  if ($_POST["date"] == null) {
-      $query = $pdo->query("SELECT *
-      FROM TRAJET
-      WHERE VILLE_DEP = $_POST["date"]
-      ;"
-    );
-    $tuples= $query->fetchAll(PDO::FETCH_OBJ);
-  }
-
   ?>
 
 

@@ -13,21 +13,13 @@ session_start();
         <ul id="menu">
           <a id="acc" href="accueil.php">  <li> Car-Share </li> </a>
           <a href="proposertrajat.php">  <li>Proposer un trajet  </li> </a>
-          <a href="inscription.php">  <li> Inscription  </li> </a>
+          <a href="blank">  <li> Inscription  </li> </a>
           <a href="connexion.php">  <li> Connexion </li> </a>
         </ul>
       </nav>
-      <?php
-      if (isset($_SESSION['id'])) {
-              echo "VOUS ETES CONNECTÉ EN TANT QUE :".$_SESSION['id'];
-      }
-       ?>
-      <img id="imagee" src="images/paysage.jpg"> </img>
-      <h2> Monte dans la caisse putain </h2>
-
 
       <div id="formul">
-        <form method="post" action = "resultat.php">
+        <form method="post" action = "post_propose.php">
           <label>  Départ :</label> <input id="home" type="text" name = "depart"/>
           <label> Destination :</label> <input  id="curs" type="text" name = "destination"/>
           <label> Date : </label> <input  id="calen" type="date" name = "date"/>
@@ -44,39 +36,3 @@ session_start();
                           );
       $tuples= $query->fetchAll(PDO::FETCH_OBJ);
       ?>
-
-
-      <div id="toulétraj">
-
-        <h2> Les trajet sont la !</h2>
-        <?php
-        foreach ($tuples as $tuple) {
-          ?>
-          <div class="trajets_classe">
-            <div class="desc_cond">
-              <img id="img_uti" src="images/annony.jpeg"> </img>
-              <ul class="coord_uti">
-
-            </div>
-            <div class="part_droite">
-              <ul>
-                <li>  <?php echo $tuple->DATE_DEP ?> </li>
-                <li> <?php echo $tuple->VILLE_DEP ?>  </li>
-                <li>  <?php echo $tuple->VILLE_ARR ?> </li>
-                <li>  <?php echo $tuple->ADRESSE_DEPART ?> </li>
-                <li> <?php echo $tuple->ADRESSE_ARR?>  </li>
-                <li>  <?php echo $tuple->PRIX ?> </li>
-              </ul>
-
-          </div>
-
-        <?php }
-        ?>
-      </div>
-
-
-
-    <footer>
-    </footer>
-  </body>
-</html>

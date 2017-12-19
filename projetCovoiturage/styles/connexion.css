@@ -53,45 +53,11 @@ ul {
  #menu a li:hover {
    background-color: rgba(111, 150, 231, 0.5);
  }
-
-
-#toulétraj{
-	width: 85%;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 15%;
-	background-color: rgba(210,210,210,0.5)
-}
-
-
-#toulétraj .trajets_classe .desc_cond #img_uti{
-	width: 100px;
-	margin-right: auto;
-}
-
-.desc_cond, .part_droite{
-	display: inline-block;
-}
-.desc_cond {
-	float: left;
-	width: 40%;
+#corps_menu{
 	height: 100px;
+
 }
-.part_droite{
-	width: 55%;
-	height: 100px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-1
+ .connect{
+	 margin-top: 5%;
+	 background-color: rgba(210, 200, 180, 0.5);
+ }
