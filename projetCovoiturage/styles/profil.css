@@ -70,7 +70,7 @@ ul {
   margin-left: 3%;
 }
 
-.avi{
+.label{
   width: 83%;
   margin-left: auto;
   margin-right: auto;
@@ -81,6 +81,6 @@ ul {
 
 
 
-.avi h3, .avi p {
+.label h3, .label p {
   margin-left: 1%;
 }
