@@ -108,14 +108,28 @@ label, #valider {
 
 
 #toulétraj .traj_type{
+	text-align: center;
 	margin: 5%;
 	padding: 2%;
 	border-style: dashed;
+
 }
+
+
 
 #toulétraj .traj_type ul li{
 	display: inline-block;
+	float: left;
 	margin-left: 2%;
+
+}
+
+#toulétraj .traj_type ul #mil{
+	margin-left: 15%;
+}
+
+#toulétraj .traj_type ul #drte{
+	float: right;
 }
 
 
