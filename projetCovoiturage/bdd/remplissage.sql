@@ -20,14 +20,14 @@ INSERT INTO VOITURE VALUES (5, 5, 5);
 INSERT INTO VOITURE VALUES (6, 3, 6);
 INSERT INTO VOITURE VALUES (7, 5, 7);
 
-INSERT INTO AVIS VALUES (1, 2, "Très sympa");
-INSERT INTO AVIS VALUES (1, 3, "Trahet agréable");
-INSERT INTO AVIS VALUES (7, 4, "Aucun problème");
-INSERT INTO AVIS VALUES (7, 6, "Très sympa");
-INSERT INTO AVIS VALUES (7, 3, "Très beaux paysages");
-INSERT INTO AVIS VALUES (5, 7, "Vegan");
-INSERT INTO AVIS VALUES (5, 4, "Parle beacoup trop");
-INSERT INTO AVIS VALUES (5, 1, "Elle m'a attqué quand j'ai ouvert mon sandwich au jambon");
+INSERT INTO AVIS VALUES (1, 2, 5,"Très sympa");
+INSERT INTO AVIS VALUES (1, 3, 4,"Trajet agréable");
+INSERT INTO AVIS VALUES (7, 4, 5,"Aucun problème");
+INSERT INTO AVIS VALUES (7, 6, 5,"Très sympa");
+INSERT INTO AVIS VALUES (7, 3, 3,"Très beaux paysages");
+INSERT INTO AVIS VALUES (5, 7, 1,"Vegan");
+INSERT INTO AVIS VALUES (5, 4, 2,"Parle beacoup trop");
+INSERT INTO AVIS VALUES (5, 1, 4,"Elle m'a attaqué quand j'ai ouvert mon sandwich au jambon");
 
 
 
