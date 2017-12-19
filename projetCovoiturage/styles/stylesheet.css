@@ -102,27 +102,20 @@ label, #valider {
 	width: 85%;
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 3%;
+	padding: 2%;
 	background-color: rgba(210,210,210,0.5)
 }
 
 
-#toulétraj .trajets_classe .desc_cond #img_uti{
-	width: 100px;
-	margin-right: auto;
+#toulétraj .traj_type{
+	margin: 5%;
+	padding: 2%;
+	border-style: dashed;
 }
 
-.desc_cond, .part_droite{
+#toulétraj .traj_type ul li{
 	display: inline-block;
-}
-.desc_cond {
-	float: left;
-	width: 40%;
-	height: 100px;
-}
-.part_droite{
-	width: 55%;
-	height: 100px;
+	margin-left: 2%;
 }
 
 

@@ -64,72 +64,74 @@ session_start();
 
         foreach ($tuples2 as $tuple2){
 
-        $query3 = $pdo->query("SELECT *
-          FROM UTILISATEUR
-          WHERE ID_UTILISATEUR = \"$tuple2->ID_PASSAGER\" ;");
-          $tuples3= $query3->fetchAll(PDO::FETCH_OBJ);
-          foreach ($tuples3 as $tuple3) {
+          $query3 = $pdo->query("SELECT *
+            FROM UTILISATEUR
+            WHERE ID_UTILISATEUR = \"$tuple2->ID_PASSAGER\" ;");
+            $tuples3= $query3->fetchAll(PDO::FETCH_OBJ);
+            foreach ($tuples3 as $tuple3) {
+              ?>
+              <div class="label">
+                <h3>  <?php echo "$tuple3->PRENOM"; ?> </h3>
+                <p> Commentaire : <?php echo "$tuple2->COMMENTAIRE"; ?> </p>
+              </div>
+              <?php
+            }
+          }
+
           ?>
-          <div class="label">
-            <h3>  <?php echo "$tuple3->PRENOM"; ?> </h3>
-            <p> Commentaire : <?php echo "$tuple2->COMMENTAIRE"; ?> </p>
-          </div>
-          <?php
-        }
-      }
-
-        ?>
-      </div>
-      <div id="traj_cond">
-        <h3> Vos trajets en tant que conducteur </h3>
-        <?php
-        $query4 = $pdo->query("SELECT *
-                              FROM TRAJET
-                              WHERE ID_CONDUCTEUR = \"$id\" ;");
-        $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
-        foreach ($tuples4 as $tuple4) {
-          ?>
-
-          <div class="label">
-            <ul>
-              <li>  <?php echo $tuple4->DATE_DEP ?> </li>
-              <li>  <?php echo $tuple4->VILLE_DEP ?>  </li>
-              <li>  <?php echo $tuple4->VILLE_ARR ?> </li>
-              <li>  <?php echo $tuple4->ADRESSE_DEPART ?> </li>
-              <li>  <?php echo $tuple4->ADRESSE_ARR?>  </li>
-              <li>  <?php echo $tuple4->PRIX ?> </li>
-            </ul>
-
-          </div>
         </div>
-        <div id="traj_pass">
-          <h3> Vos trajets en tant que passager </h3>
+        <div id="traj_cond">
+          <h3> Vos trajets en tant que conducteur </h3>
           <?php
           $query4 = $pdo->query("SELECT *
-                                FROM TRAJET
-                                WHERE ID_CONDUCTEUR = \"$id\" ;");
-          $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
-          foreach ($tuples4 as $tuple4) {
-            ?>
+            FROM TRAJET
+            WHERE ID_CONDUCTEUR = \"$id\" ;");
+            $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
+            foreach ($tuples4 as $tuple4) {
+              ?>
 
-            <div class="label">
-              <ul>
-                <li>  <?php echo $tuple4->DATE_DEP ?> </li>
-                <li>  <?php echo $tuple4->VILLE_DEP ?>  </li>
-                <li>  <?php echo $tuple4->VILLE_ARR ?> </li>
-                <li>  <?php echo $tuple4->ADRESSE_DEPART ?> </li>
-                <li>  <?php echo $tuple4->ADRESSE_ARR?>  </li>
-                <li>  <?php echo $tuple4->PRIX ?> </li>
-              </ul>
+              <div class="label">
+                <ul>
+                  <li>  <?php echo $tuple4->DATE_DEP ?> </li>
+                  <li>  <?php echo $tuple4->VILLE_DEP ?>  </li>
+                  <li>  <?php echo $tuple4->VILLE_ARR ?> </li>
+                  <li>  <?php echo $tuple4->ADRESSE_DEPART ?> </li>
+                  <li>  <?php echo $tuple4->ADRESSE_ARR?>  </li>
+                  <li>  <?php echo $tuple4->PRIX ?> </li>
+                </ul>
 
+              </div>
+            <?php } ?>
             </div>
-          </div>
+            <div id="traj_pass">
+              <h3> Vos trajets en tant que passager </h3>
+              <?php
+              $query4 = $pdo->query("SELECT *
+                FROM TRAJET
+                WHERE ID_CONDUCTEUR = \"$id\" ;");
+                $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
+                foreach ($tuples4 as $tuple4) {
+                  ?>
+
+                  <div class="label">
+                    <ul>
+                      <li>  <?php echo $tuple4->DATE_DEP ?> </li>
+                      <li>  <?php echo $tuple4->VILLE_DEP ?>  </li>
+                      <li>  <?php echo $tuple4->VILLE_ARR ?> </li>
+                      <li>  <?php echo $tuple4->ADRESSE_DEPART ?> </li>
+                      <li>  <?php echo $tuple4->ADRESSE_ARR?>  </li>
+                      <li>  <?php echo $tuple4->PRIX ?> </li>
+                    </ul>
+
+                  </div>
 
 
-        <?php } ?>
+
+                <?php }   echo "test";
+                ?>
+              </div>
 
 
 
-
-    </body>
-    </html>
+            </body>
+            </html>

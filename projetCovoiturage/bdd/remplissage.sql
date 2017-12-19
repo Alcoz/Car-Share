@@ -31,9 +31,9 @@ INSERT INTO AVIS VALUES (5, 1, 4,"Elle m'a attaqué quand j'ai ouvert mon sandwi
 
 
 
-INSERT INTO TRAJET VALUES (1, TRUE, "Montpellier", "52 avenue de la Justice", "Amsterdam", "256 avenue de Sframpfeyaa", 100 ,40, NULL, NULL, NULL, NULL);
-INSERT INTO TRAJET VALUES (2, TRUE, "Bourg-en-Bresse", "Place des chevaliers", "Saint-Malo", "43 chemin de l'école", 200 ,20, NULL, NULL, NULL, NULL);
-INSERT INTO TRAJET VALUES (3, TRUE, "Toulouse", "183 rue de l'église", "Narbonne", "Parc Anatole France", 300 ,30, NULL, NULL, NULL, NULL);
+INSERT INTO TRAJET VALUES (1, TRUE, "Montpellier", NULL, "Amsterdam", NULL, 100 ,40, NULL, NULL, NULL, NULL);
+INSERT INTO TRAJET VALUES (2, TRUE, "Bourg-en-Bresse", NULL, "Saint-Malo", NULL, 200 ,20, NULL, NULL, NULL, NULL);
+INSERT INTO TRAJET VALUES (3, TRUE, "Toulouse", NULL, "Narbonne", NULL, 300 ,30, NULL, NULL, NULL, NULL);
 INSERT INTO TRAJET VALUES (4, FALSE, "Lyon", "63 rue des mouettes", "Paris", "12 boulevard lacazette", 250, 22, 22-12-2017, TRUE, 1, 1);
 INSERT INTO TRAJET VALUES (5, FALSE, "Montpellier", "26 rue de la Colombière", "Mendes", "17 rue du sablier", 250, 23, 25-12-2017, TRUE, 7, 7);
 INSERT INTO TRAJET VALUES (6, FALSE, "Marseille", "56 rue des pommierss", "Lourdes", "75 rue saint Vincent", 400, 24, 18-12-2017, TRUE, 5, 5);

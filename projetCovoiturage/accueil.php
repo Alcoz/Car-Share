@@ -56,24 +56,15 @@ session_start();
 
       <div id="toulétraj">
 
-        <h2> Les trajet sont la !</h2>
+        <h2> Les trajets types  !</h2>
         <?php
         foreach ($tuples as $tuple) {
           ?>
-          <div class="trajets_classe">
-            <div class="desc_cond">
-              <img id="img_uti" src="images/annony.jpeg"> </img>
-              <ul class="coord_uti">
-
-            </div>
-            <div class="part_droite">
+            <div class="traj_type">
               <ul>
-                <li>  <?php echo $tuple->DATE_DEP ?> </li>
-                <li> <?php echo $tuple->VILLE_DEP ?>  </li>
-                <li>  <?php echo $tuple->VILLE_ARR ?> </li>
-                <li>  <?php echo $tuple->ADRESSE_DEPART ?> </li>
-                <li> <?php echo $tuple->ADRESSE_ARR?>  </li>
-                <li>  <?php echo $tuple->PRIX ?> </li>
+                <li> Ville de départ :  <?php echo $tuple->VILLE_DEP ?>  </li>
+                <li> Ville d'arrivée : <?php echo $tuple->VILLE_ARR ?> </li>
+                <li> Prix :  <?php echo $tuple->PRIX ?> </li>
               </ul>
 
           </div>
