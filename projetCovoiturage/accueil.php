@@ -16,10 +16,10 @@ session_start();
           if (isset($_SESSION['id'])) {
             echo "<a href=\"connexion.php\"> <li> Deconnexion</li> </a>";
             echo "<a href=\"proposertrajat.php\">  <li>Proposer un trajet  </li> </a>";
+            echo "<a href=\"profil.php\">  <li>Mon profil  </li> </a>";
           }
           else {
             echo "<a href=\"inscription.php\">  <li> Inscription  </li> </a>";
-
             echo "<a href=\"connexion.php\">  <li> Connexion </li> </a>";
           }
            ?>
