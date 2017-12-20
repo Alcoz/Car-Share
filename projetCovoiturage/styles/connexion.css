@@ -80,3 +80,22 @@ ul {
 	padding: 2%;
 	background-color: rgba(217,203,184,0.6);
 }
+
+.connect form input, .connect form label{
+	display: inline-block;
+
+}
+
+.connect form input[type='radio']{
+	float: right;
+	margin-top: 10px;
+
+}
+ .connect form #pute{
+	 float: right;
+	 margin-right: 20px;
+ }
+
+ .voila{
+	 margin-right: 75%;
+ }

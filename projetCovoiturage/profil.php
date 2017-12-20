@@ -58,12 +58,9 @@ session_start();
           echo "<li> Age:  $tuple->AGE </li>";
           echo "<li> Mail :  $tuple->MAIL </li>";
           echo "<li> Note : ";
-          if ($tuple->NOTE == null) {
-            echo "vous n'avez pas assez d'avis";
-          }
-          else {
-            echo $tuple->NOTE." </li>";
-          }
+          $pdo->exec("CALL moyenne (1, @notes);  SELECT @notes");
+          echo "</li>";
+
         }
         ?>
       </ul>
