@@ -39,56 +39,5 @@ session_start();
 
         </ul>
       </nav>
-      <?php
-      if (isset($_SESSION['id'])) {
-              echo "VOUS ETES CONNECTÉ EN TANT QUE :".$_SESSION['id'];
-      }
-       ?>
-      <img id="imagee" src="images/paysage.jpg"> </img>
-      <h2> Monte dans la caisse putain </h2>
-
-
-      <div id="formul">
-        <form method="post" action = "resultat.php">
-          <label> Départ :</label> <input id="home" type="text" name = "depart"/>
-          <label> Destination :</label> <input  id="curs" type="text" name = "destination"/>
-          <label> Date : </label> <input  id="calen" type="date" name = "date"/>
-          <input id="valider" type="submit" name = "recherche"/>
-        </form>
+      <div id="corps_menu">
       </div>
-
-      <?php
-      $query = $pdo->query("SELECT *
-                            FROM TRAJET
-                            WHERE TYPE = 1
-                            ;"
-                          );
-      $tuples= $query->fetchAll(PDO::FETCH_OBJ);
-      ?>
-
-
-      <div id="toulétraj">
-
-        <h2> Les trajets types  !</h2>
-        <?php
-        foreach ($tuples as $tuple) {
-          ?>
-            <div class="traj_type">
-              <ul>
-                <li> Ville de départ :  <?php echo $tuple->VILLE_DEP ?>  </li>
-                <li id="mil"> Ville d'arrivée : <?php echo $tuple->VILLE_ARR ?> </li>
-                <li id="drte"> Prix :  <?php echo $tuple->PRIX ?> </li>
-              </ul>
-
-          </div>
-
-        <?php }
-        ?>
-      </div>
-
-
-
-    <footer>
-    </footer>
-  </body>
-</html>
