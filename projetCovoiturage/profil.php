@@ -165,7 +165,6 @@ session_start();
                   <li>  <?php echo $tuple4->ADRESSE_ARR?>  </li>
                   <li>  <?php echo $tuple4->PRIX ?> </li>
                 </ul>
-
               </div>
             <?php } ?>
             </div>
@@ -174,15 +173,16 @@ session_start();
               <h3> Mes trajets passés en tant que passager </h3>
               <?php
               $query4 = $pdo->query("SELECT *
-                FROM TRAJET,FAIT_TRAJET
+                FROM TRAJET,FAIT_TRAJET,UTILISATEUR
                 WHERE TRAJET.ID_TRAJET=FAIT_TRAJET.ID_TRAJET
+                AND TRAJET.ID_CONDUCTEUR=UTILISATEUR.ID_UTILISATEUR
                 AND ID_PASSAGER=\"$id\"
                 AND ID_CONDUCTEUR!=\"$id\"
                 AND DATE_DEP < NOW();");
                 $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
                 foreach ($tuples4 as $tuple4) {
                   echo "<div id=\"desc\">";
-                    $id_cond = $tuple->ID_CONDUCTEUR;
+                    $id_cond = $tuple4->ID_CONDUCTEUR;
 
                     $query2 = $pdo->query("SELECT *
                                           FROM UTILISATEUR
@@ -192,48 +192,29 @@ session_start();
                     foreach ($tuples2 as $tuple2) {
 
                               echo "<div>";
-                              echo "<p> Trajet : ".$tuple->VILLE_DEP."  ----->  ".$tuple->VILLE_ARR."</p>";
-                              echo "<p id=\"p2\"> Nombre de place restante : ".$tuple->NB_PLACE;
+                              echo "<p> Trajet : ".$tuple4->VILLE_DEP."  ----->  ".$tuple4->VILLE_ARR."</p>";
+                              echo "<p id=\"p2\"> Nombre de place restante : ".$tuple4->NB_PLACE;
                               echo "</div>";
 
                               echo "<div>";
-                              echo "<p> De : ".$tuple->ADRESSE_DEPART."</p>";
+                              echo "<p> De : ".$tuple4->ADRESSE_DEPART."</p>";
                               echo "</div>";
 
                               echo "<div>";
-                              echo "<p> A : ".$tuple->ADRESSE_ARR."</p>";
-                              echo "<p id=\"p2\"> le ".$tuple->DATE_DEP." </p>";
+                              echo "<p> A : ".$tuple4->ADRESSE_ARR."</p>";
+                              echo "<p id=\"p2\"> le ".$tuple4->DATE_DEP." </p>";
                               echo "</div>";
 
                               echo "<div>";
-                              echo "<p> Conducteur : ".$tuple2->PRENOM." ".$tuple2->NOM."</p>";
-                              echo "<p id=\"p2\">  Prix : ".$tuple->PRIX."€ </p>";
+                              echo "<p> Conducteur : ".$tuple4->PRENOM." ".$tuple4->NOM."</p>";
+                              echo "<p id=\"p2\">  Prix : ".$tuple4->PRIX."€ </p>";
                               echo "</div>";
-
-
-                              if ($tuples5 != null) {
-                                echo "<div id=\"inscription\">";
-                                echo "Vous etes déjà dans ce trajet";
-                                echo "</div>";
-                              }
-                              else{
-                                echo "<div id=\"inscription\">";
-                                echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
-                                echo "<input type=\"hidden\" value=\"".$id_traj."\" name=\"trajprit\"> <input type=\"submit\" value=\"M'inscrire\" name=\"imin\">";
-                                echo "</div>";
-                              }
-
-
                     }
-
-
-                  }?>
+                  ?>
                   </div>
                 <?php }
                 ?>
+                
               </div>
-
-
-
             </body>
             </html>
