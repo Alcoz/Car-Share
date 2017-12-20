@@ -28,14 +28,11 @@ session_start();
       <div id="corps_menu">
       </div>
     <div class="proposition">
-      <?php
-        try{
-          $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '');
-        }catch(Exception $e){
-          die('Erreur : '.$e->getMessage());
-        }
+        <?php
 
-        if(isset($_POST['ville_dep']) AND isset($_POST['ad_dep'])  AND isset($_POST['ville_arr']) AND isset($_POST['ad_arr']) AND isset($_POST['distance']) AND isset($_POST['prix']) AND isset($_POST['date_dep']) AND isset($_POST['id_voiture'])){
+        if(isset($_POST['ville_dep']) && isset($_POST['ad_dep']) && isset($_POST['ville_arr']) &&
+        isset($_POST['ad_arr']) && isset($_POST['distance']) && isset($_POST['prix']) &&
+        isset($_POST['date_dep']) && isset($_POST['nb_place'])){
           $ville_dep = $_POST['ville_dep'];
           $ad_dep = $_POST['ad_dep'];
           $ville_arr = $_POST['ville_arr'];
@@ -43,12 +40,20 @@ session_start();
           $distance = $_POST['distance'];
           $prix = $_POST['prix'];
           $date_dep = $_POST['date_dep'];
-          $id_voiture = $_POST['id_voiture'];
+          $nb_place = $_POST['nb_place'];
           $id_cond = $_SESSION['id'];
 
+          echo "<h2> C'EST FAIT </h2>";
 
-          $query = $pdo->exec("INSERT INTO TRAJET (TYPE, VILLE_DEP, ADRESSE_DEPART, VILLE_ARR, ADRESSE_ARR, DISTANCE, PRIX, DATE_DEP, DISPONIBLE, ID_VOITURE, ID_CONDUCTEUR)
-                  VALUES ('1', '$ville_dep', '$ad_dep', '$ville_arr', '$ad_arr', '$distance', '$prix', '$date_dep', '1', '$id_voiture', '$id_cond');");
+          try{
+              $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '');
+            }catch(Exception $e){
+              die('Erreur : '.$e->getMessage());
+            }
+
+          $query = $pdo->exec("INSERT INTO TRAJET (TYPE, VILLE_DEP, ADRESSE_DEPART, VILLE_ARR, ADRESSE_ARR, DISTANCE, PRIX, DATE_DEP, DISPONIBLE, ID_VOITURE, ID_CONDUCTEUR, NB_PLACE)
+                  VALUES ('1', '$ville_dep', '$ad_dep', '$ville_arr', '$ad_arr', '$distance', '$prix', '$date_dep', '1', '1', '$id_cond', '$nb_place');");
+
           header('Location: accueil.php');
         }
         else {
@@ -61,7 +66,7 @@ session_start();
           echo "Distance<input type='number' name='distance'/></br>";
           echo "Prix<input type='number' name='prix'/></br>";
           echo "Date de depart<input type='date' name='date_dep' \></br>";
-          echo "Voiture<input type='number' name='id_voiture' \></br>";
+          echo "Nombre de place <input type='number' name='nb_place' \></br>";
           echo "<input type='submit' value='Propositon'/>";
         }
       ?>
