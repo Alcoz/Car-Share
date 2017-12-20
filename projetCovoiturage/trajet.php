@@ -28,7 +28,7 @@ session_start();
       <div id="corps_menu">
       </div>
       <?php
-
+      $id_final_uti = $_SESSION['id'];
       $id_traj = $_POST['id_trajet'];
       $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
       $query = $pdo->query("SELECT *
@@ -37,9 +37,16 @@ session_start();
 
       $tuples= $query->fetchAll(PDO::FETCH_OBJ);
 
+      $query5 = $pdo->query("SELECT *
+                            FROM FAIT_TRAJET
+                            WHERE ID_TRAJET = \"$id_traj\"
+                            AND ID_PASSAGER = \"$id_final_uti\";");
+
+      $tuples5= $query5->fetch(PDO::FETCH_OBJ);
+
+
       if (isset($_POST['imin'])) {
-        echo "LAAAAAAAAAAAAAAA";
-        $id_final_uti = $_SESSION['id'];
+
         $id_final_traj = $_POST['trajprit'];
         $query3 = $pdo->exec("INSERT INTO FAIT_TRAJET (ID_TRAJET, ID_PASSAGER)
                 VALUES ('$id_final_traj', '$id_final_uti');");
@@ -80,10 +87,19 @@ session_start();
                   echo "<p id=\"p2\">  Prix : ".$tuple->PRIX."€ </p>";
                   echo "</div>";
 
-                  echo "<div id=\"inscription\">";
-                  echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
-                  echo "<input type=\"hidden\" value=\"".$id_traj."\" name=\"trajprit\"> <input type=\"submit\" value=\"M'inscrire\" name=\"imin\">";
-                  echo "</div>";
+
+                  if ($tuples5 != null) {
+                    echo "<div id=\"inscription\">";
+                    echo "Vous etes déjà dans ce trajet";
+                    echo "</div>";
+                  }
+                  else{
+                    echo "<div id=\"inscription\">";
+                    echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
+                    echo "<input type=\"hidden\" value=\"".$id_traj."\" name=\"trajprit\"> <input type=\"submit\" value=\"M'inscrire\" name=\"imin\">";
+                    echo "</div>";
+                  }
+
 
         }
 

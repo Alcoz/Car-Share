@@ -113,23 +113,58 @@ session_start();
                 AND ID_CONDUCTEUR!=\"$id\";");
                 $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
                 foreach ($tuples4 as $tuple4) {
-                  ?>
+                  echo "<div id=\"desc\">";
+                    $id_cond = $tuple->ID_CONDUCTEUR;
 
-                  <div class="label">
-                    <ul>
-                      <li>  <?php echo $tuple4->DATE_DEP ?> </li>
-                      <li>  <?php echo $tuple4->VILLE_DEP ?>  </li>
-                      <li>  <?php echo $tuple4->VILLE_ARR ?> </li>
-                      <li>  <?php echo $tuple4->ADRESSE_DEPART ?> </li>
-                      <li>  <?php echo $tuple4->ADRESSE_ARR?>  </li>
-                      <li>  <?php echo $tuple4->PRIX ?> </li>
-                    </ul>
+                    $query2 = $pdo->query("SELECT *
+                                          FROM UTILISATEUR
+                                          WHERE ID_UTILISATEUR = \"$id_cond\";");
 
+                    $tuples2= $query2->fetch(PDO::FETCH_OBJ);
+                    foreach ($tuples2 as $tuple2) {
+
+                              echo "<div>";
+                              echo "<p> Trajet : ".$tuple->VILLE_DEP."  ----->  ".$tuple->VILLE_ARR."</p>";
+                              echo "<p id=\"p2\"> Nombre de place restante : ".$tuple->NB_PLACE;
+                              echo "</div>";
+
+                              echo "<div>";
+                              echo "<p> De : ".$tuple->ADRESSE_DEPART."</p>";
+                              echo "</div>";
+
+                              echo "<div>";
+                              echo "<p> A : ".$tuple->ADRESSE_ARR."</p>";
+                              echo "<p id=\"p2\"> le ".$tuple->DATE_DEP." </p>";
+                              echo "</div>";
+
+                              echo "<div>";
+                              echo "<p> Conducteur : ".$tuple2->PRENOM." ".$tuple2->NOM."</p>";
+                              echo "<p id=\"p2\">  Prix : ".$tuple->PRIX."€ </p>";
+                              echo "</div>";
+
+
+                              if ($tuples5 != null) {
+                                echo "<div id=\"inscription\">";
+                                echo "Vous etes déjà dans ce trajet";
+                                echo "</div>";
+                              }
+                              else{
+                                echo "<div id=\"inscription\">";
+                                echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
+                                echo "<input type=\"hidden\" value=\"".$id_traj."\" name=\"trajprit\"> <input type=\"submit\" value=\"M'inscrire\" name=\"imin\">";
+                                echo "</div>";
+                              }
+
+
+                    }
+
+
+                  }?>
                   </div>
 
 
 
-                <?php }   echo "test";
+                <?php }
                 ?>
               </div>
 
