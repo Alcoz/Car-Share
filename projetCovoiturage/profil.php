@@ -174,28 +174,18 @@ session_start();
               <h3> Mes trajets passés en tant que passager </h3>
               <?php
               $query4 = $pdo->query("SELECT *
-<<<<<<< HEAD
-                FROM TRAJET,FAIT_TRAJET
-                WHERE TRAJET.ID_TRAJET = FAIT_TRAJET.ID_TRAJET
-                AND FAIT_TRAJET.ID_PASSAGER = \"$id\"
-                AND TRAJET.ID_CONDUCTEUR != \"$id\";");
-
-=======
                 FROM TRAJET,FAIT_TRAJET,UTILISATEUR
                 WHERE TRAJET.ID_TRAJET=FAIT_TRAJET.ID_TRAJET
                 AND TRAJET.ID_CONDUCTEUR=UTILISATEUR.ID_UTILISATEUR
                 AND ID_PASSAGER=\"$id\"
                 AND ID_CONDUCTEUR!=\"$id\"
                 AND DATE_DEP < NOW();");
->>>>>>> de44c66daefccd8ed6595c87556dac140357cda3
                 $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
                 foreach ($tuples4 as $tuple4) {
                   $id_traj = $tuple4->ID_TRAJET;
                   echo "<div id=\"desc\">";
-<<<<<<< HEAD
-=======
+
                     $id_cond = $tuple4->ID_CONDUCTEUR;
->>>>>>> de44c66daefccd8ed6595c87556dac140357cda3
 
                     $query2 = $pdo->query("SELECT *
                                           FROM UTILISATEUR
@@ -228,7 +218,7 @@ session_start();
                               echo "</div>";
 
                               echo "<div>";
-<<<<<<< HEAD
+
                               echo "<p> Conducteur : ".$tuples2->PRENOM." ".$tuples2->NOM."</p>";
                               echo "<p id=\"p2\">  Prix : ".$tuple4->PRIX."€ </p>";
                               echo "</div>";
@@ -253,19 +243,5 @@ session_start();
                   ?>
                   </div>
 
-
-
-=======
-                              echo "<p> Conducteur : ".$tuple4->PRENOM." ".$tuple4->NOM."</p>";
-                              echo "<p id=\"p2\">  Prix : ".$tuple4->PRIX."€ </p>";
-                              echo "</div>";
-                    }
-                  ?>
-                  </div>
-                <?php }
-                ?>
-                
-              </div>
->>>>>>> de44c66daefccd8ed6595c87556dac140357cda3
             </body>
             </html>
