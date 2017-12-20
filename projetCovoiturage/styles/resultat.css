@@ -103,3 +103,29 @@ ul {
 #test, #voir_plus{
 	display: inline-block;
 }
+
+#desc{
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgba(206,194,190,0.7);
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+
+
+#desc div p{
+	display: inline-block;
+	margin-top: 0px;
+	margin-left: 3%;
+}
+
+#desc div #p2{
+	float: right;
+	margin-right: 3%;
+}
+
+#desc #inscription{
+	text-align: center;
+}
