@@ -5,7 +5,7 @@ session_start();
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="styles/stylesheet.css" />
+    <link rel="stylesheet" href="styles/admin.css" />
     <title>Car-Share - Accueil</title>
   </head>
   <body>
@@ -41,28 +41,25 @@ session_start();
       </nav>
       <div id="corps_menu">
       </div>
-      <?php
-      if (isset($_SESSION['id'])) {
-        ?>
-        <div id="formul">
-          <form method="post" action = "post_propose.php">
-            <label>  Départ :</label> <input id="home" type="text" name = "depart"/>
-            <label> Destination :</label> <input  id="curs" type="text" name = "destination"/>
-            <label> Date : </label> <input  id="calen" type="date" name = "date"/>
-            <input id="valider" type="submit" name = "recherche"/>
-          </form>
-        </div>
 
+      <div id="trzaj_type">
+        <h3> Proposer un trajet type </h3>
         <?php
-        $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
-        $query = $pdo->query("SELECT *
-                              FROM TRAJET
-                              WHERE TYPE = 1
-                              ;"
-                            );
-        $tuples= $query->fetchAll(PDO::FETCH_OBJ);
+        if (isset($_POST['prop_traj_type'])) {
+          $vil_dep  = $_POST['ville_dep'];
+          $vil_ar = $_POST['ville_arr'];
+          $prix = $_POST['prix'];
+          $pdo->exec("INSERT INTO TRAJET (TYPE, VILLE_DEP, VILLE_ARR, PRIX) VALUES (TRUE, \"$vil_dep\", \"$vil_ar\", \"$prix\");");
+          echo "<p> Trajet type soumis </p>";
+
+        }
+        else {
+        echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
+        echo "Ville de depart<input type='text' name='ville_dep' \></br>";
+        echo "Ville d'arrivée<input type='text' name='ville_arr' \></br>";
+        echo "Prix<input type='number' name='prix'/></br>";
+        echo "<input type='submit' name='prop_traj_type' value='Propositon'/>";
 
       }
-      else{
-        echo "<div> <p> Vous devez êtres connecté pour proposer un trajt </p>";
-      }
+         ?>
+      </div>

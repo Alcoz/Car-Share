@@ -25,7 +25,7 @@ session_start();
 
             $admin = $query2->fetch();
             if ($admin['ETAT'] ==  1) {
-              echo "<a href=\"profil.php\">  <li> Administration  </li> </a>";
+              echo "<a href=\"admin.php\">  <li> Administration  </li> </a>";
             }
 
           }
