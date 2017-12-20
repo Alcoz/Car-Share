@@ -13,6 +13,7 @@ session_start();
     <ul id="menu">
       <a id="acc" href="accueil.php">  <li> Car-Share </li> </a>
       <?php
+
       if (isset($_SESSION['id'])) {
         echo "<a href=\"connexion.php\"> <li> Deconnexion</li> </a>";
         echo "<a href=\"proposertrajat.php\">  <li>Proposer un trajet  </li> </a>";
@@ -108,65 +109,69 @@ session_start();
               <?php
               $query4 = $pdo->query("SELECT *
                 FROM TRAJET,FAIT_TRAJET
-                WHERE TRAJET.ID_TRAJET=FAIT_TRAJET.ID_TRAJET
-                AND ID_PASSAGER=\"$id\"
-                AND ID_CONDUCTEUR!=\"$id\";");
+                WHERE TRAJET.ID_TRAJET = FAIT_TRAJET.ID_TRAJET
+                AND FAIT_TRAJET.ID_PASSAGER = \"$id\"
+                AND TRAJET.ID_CONDUCTEUR != \"$id\";");
+
                 $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
                 foreach ($tuples4 as $tuple4) {
+                  $id_traj = $tuple4->ID_TRAJET;
                   echo "<div id=\"desc\">";
-                    $id_cond = $tuple->ID_CONDUCTEUR;
 
                     $query2 = $pdo->query("SELECT *
                                           FROM UTILISATEUR
-                                          WHERE ID_UTILISATEUR = \"$id_cond\";");
+                                          WHERE ID_UTILISATEUR = \"$id\";");
 
                     $tuples2= $query2->fetch(PDO::FETCH_OBJ);
-                    foreach ($tuples2 as $tuple2) {
+
+                    $query5 = $pdo->query("SELECT *
+                                          FROM AVIS, TRAJET, FAIT_TRAJET
+                                          WHERE AVIS.ID_PASSAGER = \"$id\"
+                                          AND AVIS.ID_PASSAGER = FAIT_TRAJET.ID_PASSAGER
+                                          AND FAIT_TRAJET.ID_TRAJET = TRAJET.ID_TRAJET
+                                          AND AVIS.ID_CONDUCTEUR = TRAJET.ID_CONDUCTEUR;");
+
+                    $tuples5= $query5->fetch(PDO::FETCH_OBJ);
+
 
                               echo "<div>";
-                              echo "<p> Trajet : ".$tuple->VILLE_DEP."  ----->  ".$tuple->VILLE_ARR."</p>";
-                              echo "<p id=\"p2\"> Nombre de place restante : ".$tuple->NB_PLACE;
+                              echo "<p> Trajet : ".$tuple4->VILLE_DEP."  ----->  ".$tuple4->VILLE_ARR."</p>";
+                              echo "<p id=\"p2\"> Nombre de place restante : ".$tuple4->NB_PLACE;
                               echo "</div>";
 
                               echo "<div>";
-                              echo "<p> De : ".$tuple->ADRESSE_DEPART."</p>";
+                              echo "<p> De : ".$tuple4->ADRESSE_DEPART."</p>";
                               echo "</div>";
 
                               echo "<div>";
-                              echo "<p> A : ".$tuple->ADRESSE_ARR."</p>";
-                              echo "<p id=\"p2\"> le ".$tuple->DATE_DEP." </p>";
+                              echo "<p> A : ".$tuple4->ADRESSE_ARR."</p>";
+                              echo "<p id=\"p2\"> le ".$tuple4->DATE_DEP." </p>";
                               echo "</div>";
 
                               echo "<div>";
-                              echo "<p> Conducteur : ".$tuple2->PRENOM." ".$tuple2->NOM."</p>";
-                              echo "<p id=\"p2\">  Prix : ".$tuple->PRIX."€ </p>";
+                              echo "<p> Conducteur : ".$tuples2->PRENOM." ".$tuples2->NOM."</p>";
+                              echo "<p id=\"p2\">  Prix : ".$tuple4->PRIX."€ </p>";
                               echo "</div>";
 
 
                               if ($tuples5 != null) {
                                 echo "<div id=\"inscription\">";
-                                echo "Vous etes déjà dans ce trajet";
+                                echo "Vous etes déjà dans ce trajet tu peux laisser un avis";
                                 echo "</div>";
                               }
                               else{
                                 echo "<div id=\"inscription\">";
+                                echo "t'as déjà un avis";
                                 echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
                                 echo "<input type=\"hidden\" value=\"".$id_traj."\" name=\"trajprit\"> <input type=\"submit\" value=\"M'inscrire\" name=\"imin\">";
                                 echo "</div>";
                               }
 
 
-                    }
 
-
-                  }?>
+                  echo "</div>";}
+                  ?>
                   </div>
-
-
-
-                <?php }
-                ?>
-              </div>
 
 
 
