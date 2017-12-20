@@ -11,6 +11,8 @@ INSERT INTO UTILISATEUR VALUES (4, "Dupont", "Cécile", 29, "Femme", "DupontC@ho
 INSERT INTO UTILISATEUR VALUES (5, "Michelet", "Cammile", 23, "Femme", "Mimille@gmail.com", "mdpcamille", FALSE, NULL);
 INSERT INTO UTILISATEUR VALUES (6, "Diaz", "Anthony", 25, "Homme", "Adiaz@wanadoo.fr", "mdpantho", FALSE, NULL);
 INSERT INTO UTILISATEUR VALUES (7, "Pourcher", "Axel", 32, "Homme", "Pourcher.axel@hotmail.fr", "mdpmartin", FALSE, NULL);
+INSERT INTO UTILISATEUR VALUES (8, "admin", "admin", 150, "Homme", "no_reply@gouv.fr", "admin", TRUE, 5);
+
 
 INSERT INTO VOITURE VALUES (1, 5, 1);
 INSERT INTO VOITURE VALUES (2, 5, 2);
