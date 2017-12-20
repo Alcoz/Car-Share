@@ -103,7 +103,8 @@ session_start();
                 </ul>
                 <?php
                 if (isset($_POST['desinscrire_conducteur'])) {
-                  $drop = $pdo->exec("DELETE FROM TRAJET WHERE ID_TRAJET=\'$tuple4->ID_TRAJET\'");
+                  $drop = $pdo->exec("DELETE FROM FAIT_TRAJET WHERE ID_TRAJET=$tuple4->ID_TRAJET");
+                  $drop = $pdo->exec("DELETE FROM TRAJET WHERE ID_TRAJET=$tuple4->ID_TRAJET");
                 }
                 echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
                 echo "<input type='submit' name=\"desinscrire_conducteur\" value='Se Désinscrire'/>";
@@ -136,7 +137,7 @@ session_start();
                     </ul>
                     <?php
                     if (isset($_POST['desinscrire_passager'])) {
-                      $drop = $pdo->exec("DELETE FROM FAIT_TRAJET WHERE ID_TRAJET = \'$tuple4->ID_TRAJET\' AND ID_PASSAGER = \'".$_SESSION['id']."'");
+                      $drop = $pdo->exec("DELETE FROM FAIT_TRAJET WHERE ID_TRAJET = $tuple4->ID_TRAJET AND ID_PASSAGER = $id" );
                       header("location: profil.php");
                     }
                     echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
@@ -202,7 +203,10 @@ session_start();
 
                     $tuples5= $query5->fetch(PDO::FETCH_OBJ);
 
-
+                    $query6 = $pdo->query("SELECT *
+                                          FROM UTILISATEUR
+                                          WHERE ID_UTILISATEUR = $tuples5->ID_CONDUCTEUR;");
+                    $tuples6 = $query6->fetch(PDO::FETCH_OBJ);
                               echo "<div>";
                               echo "<p> Trajet : ".$tuple4->VILLE_DEP."  ----->  ".$tuple4->VILLE_ARR."</p>";
                               echo "<p id=\"p2\"> Nombre de place restante : ".$tuple4->NB_PLACE;
@@ -219,25 +223,32 @@ session_start();
 
                               echo "<div>";
 
-                              echo "<p> Conducteur : ".$tuples2->PRENOM." ".$tuples2->NOM."</p>";
+                              echo "<p> Conducteur : ".$tuples6->PRENOM." ".$tuples6->NOM."</p>";
                               echo "<p id=\"p2\">  Prix : ".$tuple4->PRIX."€ </p>";
                               echo "</div>";
 
-
+                              if(isset($_POST['commentaire'])){
+                                $conducteur = $tuples5->ID_CONDUCTEUR;
+                                $passager = $tuples5->ID_PASSAGER;
+                                $note = $_POST['note'];
+                                $comm = $_POST['commentaire'];
+                                $pdo->exec("INSERT INTO AVIS(ID_CONDUCTEUR, ID_PASSAGER, NOTES, COMMENTAIRE) VALUES(".$conducteur.",".$passager.",".$note.",\"".$comm."\");");
+                              }
                               if ($tuples5 != null) {
                                 echo "<div id=\"inscription\">";
-                                echo "Vous etes déjà dans ce trajet tu peux laisser un avis";
+                                echo $tuples5->NOTES;
+                                echo $tuples5->COMMENTAIRE;
                                 echo "</div>";
+
                               }
                               else{
                                 echo "<div id=\"inscription\">";
-                                echo "t'as déjà un avis";
                                 echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
-                                echo "<input type=\"hidden\" value=\"".$id_traj."\" name=\"trajprit\"> <input type=\"submit\" value=\"M'inscrire\" name=\"imin\">";
+                                echo "<label> Notes </label> <input type='number' name='note' \>";
+                                echo "<label> Commentaire</label> <input type='text' name='commentaire'/>";
+                                echo "<input type='submit' value='commentaire'/>";
                                 echo "</div>";
                               }
-
-
 
                   echo "</div>";}
                   ?>
