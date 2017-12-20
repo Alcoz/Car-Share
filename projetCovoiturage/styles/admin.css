@@ -52,3 +52,29 @@ ul {
  	height: 150px;
 
  }
+
+ .carre{
+   display: inline-block;
+   width: 35%;
+   background-color: rgba(132,154,168,0.7);
+   padding: 20px;
+   padding-top: 10px;
+ }
+
+#corps{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#bite{
+  float: right;
+}
+  .carre input{
+    margin-bottom: 1%;
+  }
+
+  .carre #subm{
+    margin-top: 2%;
+    margin-left: 5%;
+  }
