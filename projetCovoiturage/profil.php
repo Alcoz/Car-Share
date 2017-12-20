@@ -188,25 +188,23 @@ session_start();
 
                     $id_cond = $tuple4->ID_CONDUCTEUR;
 
-                    $query2 = $pdo->query("SELECT *
-                                          FROM UTILISATEUR
-                                          WHERE ID_UTILISATEUR = \"$id\";");
-
-                    $tuples2= $query2->fetch(PDO::FETCH_OBJ);
-
                     $query5 = $pdo->query("SELECT *
                                           FROM AVIS, TRAJET, FAIT_TRAJET
                                           WHERE AVIS.ID_PASSAGER = \"$id\"
                                           AND AVIS.ID_PASSAGER = FAIT_TRAJET.ID_PASSAGER
                                           AND FAIT_TRAJET.ID_TRAJET = TRAJET.ID_TRAJET
-                                          AND AVIS.ID_CONDUCTEUR = TRAJET.ID_CONDUCTEUR;");
+                                          AND AVIS.ID_CONDUCTEUR = TRAJET.ID_CONDUCTEUR
+                                          AND TRAJET.ID_TRAJET = $id_traj
+                                          AND TRAJET.ID_CONDUCTEUR = $id_cond
+                                          AND AVIS.ID_PASSAGER = $id;");
 
                     $tuples5= $query5->fetch(PDO::FETCH_OBJ);
 
                     $query6 = $pdo->query("SELECT *
-                                          FROM UTILISATEUR
-                                          WHERE ID_UTILISATEUR = $tuples5->ID_CONDUCTEUR;");
+                                           FROM UTILISATEUR
+                                           WHERE ID_UTILISATEUR = $id_cond");
                     $tuples6 = $query6->fetch(PDO::FETCH_OBJ);
+
                               echo "<div>";
                               echo "<p> Trajet : ".$tuple4->VILLE_DEP."  ----->  ".$tuple4->VILLE_ARR."</p>";
                               echo "<p id=\"p2\"> Nombre de place restante : ".$tuple4->NB_PLACE;
@@ -228,18 +226,18 @@ session_start();
                               echo "</div>";
 
                               if(isset($_POST['commentaire'])){
-                                $conducteur = $tuples5->ID_CONDUCTEUR;
-                                $passager = $tuples5->ID_PASSAGER;
+                                $conducteur = $id_cond;
+                                $passager = $id;
                                 $note = $_POST['note'];
                                 $comm = $_POST['commentaire'];
                                 $pdo->exec("INSERT INTO AVIS(ID_CONDUCTEUR, ID_PASSAGER, NOTES, COMMENTAIRE) VALUES(".$conducteur.",".$passager.",".$note.",\"".$comm."\");");
                               }
+
                               if ($tuples5 != null) {
                                 echo "<div id=\"inscription\">";
                                 echo $tuples5->NOTES;
                                 echo $tuples5->COMMENTAIRE;
                                 echo "</div>";
-
                               }
                               else{
                                 echo "<div id=\"inscription\">";

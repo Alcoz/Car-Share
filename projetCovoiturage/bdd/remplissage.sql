@@ -41,6 +41,7 @@ INSERT INTO TRAJET VALUES (9, FALSE, "Montpellier", "13 avenue du pic saint loup
 INSERT INTO TRAJET VALUES (10, FALSE, "Montpellier", "Arret de tram : Les Sabines", "Paris", "Chatelet", 430, 25, '2017-12-25', TRUE, 1, 1, 3);
 INSERT INTO TRAJET VALUES (11, FALSE, "Montpellier", "Place de la comédie", "Paris", "Montmartre", 428, 25, '2017-12-25', TRUE, 4, 4, 1);
 
+
 INSERT INTO FAIT_TRAJET VALUES (4, 1);
 INSERT INTO FAIT_TRAJET VALUES (4, 2);
 INSERT INTO FAIT_TRAJET VALUES (4, 3);
