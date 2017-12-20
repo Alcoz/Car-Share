@@ -42,6 +42,7 @@ INSERT INTO TRAJET VALUES (8, FALSE, "Montpellier", "Clinique St Roq", "Paris", 
 INSERT INTO TRAJET VALUES (9, FALSE, "Montpellier", "13 avenue du pic saint loup","Paris", "56 rue de la Paix", 410, 25, '2017-12-25', TRUE, 2, 2, 3);
 INSERT INTO TRAJET VALUES (10, FALSE, "Montpellier", "Arret de tram : Les Sabines", "Paris", "Chatelet", 430, 25, '2017-12-25', TRUE, 1, 1, 3);
 INSERT INTO TRAJET VALUES (11, FALSE, "Montpellier", "Place de la comédie", "Paris", "Montmartre", 428, 25, '2017-12-25', TRUE, 4, 4, 1);
+INSERT INTO TRAJET VALUES (12, FALSE, "Perols", "12 rue du mas rouge", "Barcelone", "35 calle de la libertad", 256, 36.5, '2016-12-25', FALSE, 6, 6, 2);
 
 
 INSERT INTO FAIT_TRAJET VALUES (4, 1);
@@ -65,4 +66,5 @@ INSERT INTO FAIT_TRAJET VALUES (10, 1);
 INSERT INTO FAIT_TRAJET VALUES (10, 3);
 INSERT INTO FAIT_TRAJET VALUES (11, 4);
 INSERT INTO FAIT_TRAJET VALUES (11, 5);
-INSERT INTO FAIT_TRAJET VALUES ()
+INSERT INTO FAIT_TRAJET VALUES (12, 6);
+INSERT INTO FAIT_TRAJET VALUES (12, 2);
