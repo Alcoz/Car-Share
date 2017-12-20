@@ -54,44 +54,78 @@ ul {
    background-color: rgba(111, 150, 231, 0.5);
  }
 
+ #corps_menu{
+ 	height: 150px;
+ }
 
-#toulétraj{
-	width: 85%;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 15%;
-	background-color: rgba(210,210,210,0.5)
+ #toutraj{
+	 width: 85%;
+	 margin-left: auto;
+	 margin-right: auto;
+ }
+
+ .imguti{
+	 width: 90px;
+	 height: 90px;
+	 margin-top: 15%;
+ }
+
+.label{
+	width: 45%;
+	height: 130px;
+	display: inline-block;
+	margin: 2%;
+	border-style: dashed;
 }
 
 
-#toulétraj .trajets_classe .desc_cond #img_uti{
-	width: 100px;
-	margin-right: auto;
-}
-
-.desc_cond, .part_droite{
+.label div{
 	display: inline-block;
 }
-.desc_cond {
+.label .gauche{
 	float: left;
-	width: 40%;
-	height: 100px;
-}
-.part_droite{
-	width: 55%;
-	height: 100px;
+	margin-left: 1%;
 }
 
+.label .mil{
+	margin-left: 3%;
+}
+
+.label .drt{
+	float: right;
+	margin-right: 5%;
+}
+
+#voir_plus{
+	float: right;
+}
+
+#test, #voir_plus{
+	display: inline-block;
+}
+
+#desc{
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgba(206,194,190,0.7);
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
 
 
 
+#desc div p{
+	display: inline-block;
+	margin-top: 0px;
+	margin-left: 3%;
+}
 
+#desc div #p2{
+	float: right;
+	margin-right: 3%;
+}
 
-
-
-
-
-
-
-
-1
+#desc #inscription{
+	text-align: center;
+}
