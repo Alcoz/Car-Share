@@ -28,15 +28,6 @@ session_start();
       <div id="corps_menu">
       </div>
       <?php
-      if (isset($_POST['imin'])) {
-        echo "LAAAAAAAAAAAAAAA";
-        $id_final_uti = $_SESSION['id'];
-        $id_final_traj = $_POST['trajprit'];
-        $query = $pdo->exec("INSERT INTO FAIT_TRAJET (ID_TRAJET, ID_PASSAGER)
-                VALUES ('$id_final_traj', '$id_final_uti');");
-        header('Location: accueil.php');
-      }
-
 
       $id_traj = $_POST['id_trajet'];
       $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
@@ -45,6 +36,15 @@ session_start();
                             WHERE ID_TRAJET = \"$id_traj\";");
 
       $tuples= $query->fetchAll(PDO::FETCH_OBJ);
+
+      if (isset($_POST['imin'])) {
+        echo "LAAAAAAAAAAAAAAA";
+        $id_final_uti = $_SESSION['id'];
+        $id_final_traj = $_POST['trajprit'];
+        $query = $pdo->exec("INSERT INTO FAIT_TRAJET (ID_TRAJET, ID_PASSAGER)
+                VALUES ('$id_final_traj', '$id_final_uti');");
+        header('Location: accueil.php');
+      }
 
 
 
@@ -79,7 +79,8 @@ session_start();
                   echo "</div>";
 
                   echo "<div id=\"inscription\">";
-                  echo "<from method=\"POST\" action=\"trajet.php\"> <input type=\"hidden\" value=\"".$id_traj."\" name=\"trajprit\"> <input type=\"submit\" value=\"M'inscrire\" name=\"imin\">";
+                  echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
+                  echo "<input type=\"hidden\" value=\"".$id_traj."\" name=\"trajprit\"> <input type=\"submit\" value=\"M'inscrire\" name=\"imin\">";
                   echo "</div>";
 
         }
