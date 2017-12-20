@@ -81,12 +81,13 @@ session_start();
 
           ?>
         </div>
-        <div id="traj_cond">
-          <h3> Vos trajets en tant que conducteur </h3>
+        <div id="traj_futur_conducteur">
+          <h3> Mes trajets futurs en tant que conducteur </h3>
           <?php
           $query4 = $pdo->query("SELECT *
             FROM TRAJET
-            WHERE ID_CONDUCTEUR = \"$id\" ;");
+            WHERE ID_CONDUCTEUR = \"$id\"
+            AND DATE_DEP > NOW();");
             $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
             foreach ($tuples4 as $tuple4) {
               ?>
@@ -100,23 +101,101 @@ session_start();
                   <li>  <?php echo $tuple4->ADRESSE_ARR?>  </li>
                   <li>  <?php echo $tuple4->PRIX ?> </li>
                 </ul>
-
+                <?php
+                if (isset($_POST['desinscrire_conducteur'])) {
+                  $drop = $pdo->exec("DELETE FROM TRAJET WHERE ID_TRAJET=\'$tuple4->ID_TRAJET\'");
+                }
+                echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
+                echo "<input type='submit' name=\"desinscrire_conducteur\" value='Se Désinscrire'/>";
+                 ?>
               </div>
             <?php } ?>
             </div>
-            <div id="traj_pass">
-              <h3> Vos trajets en tant que passager </h3>
+
+            <div id="traj_futur_passager">
+              <h3> Mes trajets futurs en tant que passager </h3>
               <?php
               $query4 = $pdo->query("SELECT *
+                FROM TRAJET,FAIT_TRAJET
+                WHERE TRAJET.ID_TRAJET=FAIT_TRAJET.ID_TRAJET
+                AND ID_PASSAGER=\"$id\"
+                AND ID_CONDUCTEUR!=\"$id\"
+                AND DATE_DEP > CURDATE();");
+                $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
+                foreach ($tuples4 as $tuple4) {
+                  ?>
+
+                  <div class="label">
+                    <ul>
+                      <li>  <?php echo $tuple4->DATE_DEP ?> </li>
+                      <li>  <?php echo $tuple4->VILLE_DEP ?>  </li>
+                      <li>  <?php echo $tuple4->VILLE_ARR ?> </li>
+                      <li>  <?php echo $tuple4->ADRESSE_DEPART ?> </li>
+                      <li>  <?php echo $tuple4->ADRESSE_ARR?>  </li>
+                      <li>  <?php echo $tuple4->PRIX ?> </li>
+                    </ul>
+                    <?php
+                    if (isset($_POST['desinscrire_passager'])) {
+                      $drop = $pdo->exec("DELETE FROM FAIT_TRAJET WHERE ID_TRAJET = \'$tuple4->ID_TRAJET\' AND ID_PASSAGER = \'".$_SESSION['id']."'");
+                      header("location: profil.php");
+                    }
+                    echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
+                    echo "<input type='submit' name=\"desinscrire_passager\" value='Se Désinscrire'/>";
+                     ?>
+                  </div>
+                <?php }
+                ?>
+              </div>
+        <div id="traj_cond">
+          <h3> Mes trajets passés en tant que conducteur</h3>
+          <?php
+          $query4 = $pdo->query("SELECT *
+            FROM TRAJET
+            WHERE ID_CONDUCTEUR = \"$id\"
+            AND DATE_DEP < NOW();");
+            $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
+            foreach ($tuples4 as $tuple4) {
+              ?>
+
+              <div class="label">
+                <ul>
+                  <li>  <?php echo $tuple4->DATE_DEP ?> </li>
+                  <li>  <?php echo $tuple4->VILLE_DEP ?>  </li>
+                  <li>  <?php echo $tuple4->VILLE_ARR ?> </li>
+                  <li>  <?php echo $tuple4->ADRESSE_DEPART ?> </li>
+                  <li>  <?php echo $tuple4->ADRESSE_ARR?>  </li>
+                  <li>  <?php echo $tuple4->PRIX ?> </li>
+                </ul>
+              </div>
+            <?php } ?>
+            </div>
+
+            <div id="traj_pass">
+              <h3> Mes trajets passés en tant que passager </h3>
+              <?php
+              $query4 = $pdo->query("SELECT *
+<<<<<<< HEAD
                 FROM TRAJET,FAIT_TRAJET
                 WHERE TRAJET.ID_TRAJET = FAIT_TRAJET.ID_TRAJET
                 AND FAIT_TRAJET.ID_PASSAGER = \"$id\"
                 AND TRAJET.ID_CONDUCTEUR != \"$id\";");
 
+=======
+                FROM TRAJET,FAIT_TRAJET,UTILISATEUR
+                WHERE TRAJET.ID_TRAJET=FAIT_TRAJET.ID_TRAJET
+                AND TRAJET.ID_CONDUCTEUR=UTILISATEUR.ID_UTILISATEUR
+                AND ID_PASSAGER=\"$id\"
+                AND ID_CONDUCTEUR!=\"$id\"
+                AND DATE_DEP < NOW();");
+>>>>>>> de44c66daefccd8ed6595c87556dac140357cda3
                 $tuples4= $query4->fetchAll(PDO::FETCH_OBJ);
                 foreach ($tuples4 as $tuple4) {
                   $id_traj = $tuple4->ID_TRAJET;
                   echo "<div id=\"desc\">";
+<<<<<<< HEAD
+=======
+                    $id_cond = $tuple4->ID_CONDUCTEUR;
+>>>>>>> de44c66daefccd8ed6595c87556dac140357cda3
 
                     $query2 = $pdo->query("SELECT *
                                           FROM UTILISATEUR
@@ -149,6 +228,7 @@ session_start();
                               echo "</div>";
 
                               echo "<div>";
+<<<<<<< HEAD
                               echo "<p> Conducteur : ".$tuples2->PRENOM." ".$tuples2->NOM."</p>";
                               echo "<p id=\"p2\">  Prix : ".$tuple4->PRIX."€ </p>";
                               echo "</div>";
@@ -175,5 +255,17 @@ session_start();
 
 
 
+=======
+                              echo "<p> Conducteur : ".$tuple4->PRENOM." ".$tuple4->NOM."</p>";
+                              echo "<p id=\"p2\">  Prix : ".$tuple4->PRIX."€ </p>";
+                              echo "</div>";
+                    }
+                  ?>
+                  </div>
+                <?php }
+                ?>
+                
+              </div>
+>>>>>>> de44c66daefccd8ed6595c87556dac140357cda3
             </body>
             </html>
