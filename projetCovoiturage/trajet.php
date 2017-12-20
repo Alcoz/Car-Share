@@ -41,8 +41,10 @@ session_start();
         echo "LAAAAAAAAAAAAAAA";
         $id_final_uti = $_SESSION['id'];
         $id_final_traj = $_POST['trajprit'];
-        $query = $pdo->exec("INSERT INTO FAIT_TRAJET (ID_TRAJET, ID_PASSAGER)
+        $query3 = $pdo->exec("INSERT INTO FAIT_TRAJET (ID_TRAJET, ID_PASSAGER)
                 VALUES ('$id_final_traj', '$id_final_uti');");
+        $query4 = $pdo->exec("UPDATE TRAJET SET NB_PLACE = NB_PLACE - 1 WHERE ID_TRAJET = $id_final_traj;" );
+
         header('Location: accueil.php');
       }
 
@@ -61,7 +63,7 @@ session_start();
 
                   echo "<div>";
                   echo "<p> Trajet : ".$tuple->VILLE_DEP."  ----->  ".$tuple->VILLE_ARR."</p>";
-                  echo "<p id=\"p2\"> Nombre de place restante : ";
+                  echo "<p id=\"p2\"> Nombre de place restante : ".$tuple->NB_PLACE;
                   echo "</div>";
 
                   echo "<div>";
