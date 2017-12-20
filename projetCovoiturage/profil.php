@@ -102,15 +102,18 @@ session_start();
                   <li>  <?php echo $tuple4->PRIX ?> </li>
                 </ul>
                 <?php
-                if (isset($_POST['desinscrire_conducteur'])) {
-                  $drop = $pdo->exec("DELETE FROM FAIT_TRAJET WHERE ID_TRAJET=$tuple4->ID_TRAJET");
-                  $drop = $pdo->exec("DELETE FROM TRAJET WHERE ID_TRAJET=$tuple4->ID_TRAJET");
-                }
+
                 echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
+                echo "<input type=\"hidden\" value=\"".$tuple4->ID_TRAJET."\" name=\"supp_traj_cond\">";
                 echo "<input type='submit' name=\"desinscrire_conducteur\" value='Se Désinscrire'/>";
                  ?>
               </div>
-            <?php } ?>
+            <?php }
+            if (isset($_POST['desinscrire_conducteur'])) {
+              $id_traj = $_POST['supp_traj_cond'];
+              $drop = $pdo->exec("DELETE FROM FAIT_TRAJET WHERE ID_TRAJET=$id_traj");
+              $drop = $pdo->exec("DELETE FROM TRAJET WHERE ID_TRAJET=$id_traj");
+            }?>
             </div>
 
             <div id="traj_futur_passager">
@@ -136,17 +139,19 @@ session_start();
                       <li>  <?php echo $tuple4->PRIX ?> </li>
                     </ul>
                     <?php
-                    if (isset($_POST['desinscrire_passager'])) {
-                      $drop = $pdo->exec("DELETE FROM FAIT_TRAJET WHERE ID_TRAJET = $tuple4->ID_TRAJET AND ID_PASSAGER = $id" );
-                      header("location: profil.php");
-                    }
                     echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
+                    echo "<input type=\"hidden\" value=\"".$tuple4->ID_TRAJET."\" name=\"supp_traj_pass\">";
                     echo "<input type='submit' name=\"desinscrire_passager\" value='Se Désinscrire'/>";
                      ?>
                   </div>
                 <?php }
+                if (isset($_POST['desinscrire_passager']) AND isset($_POST['supp_traj_pass'])) {
+                  $id_traj = $_POST['supp_traj_pass'];
+                  $drop = $pdo->exec("DELETE FROM FAIT_TRAJET WHERE ID_TRAJET = $id_traj AND ID_PASSAGER = $id" );
+              }
                 ?>
               </div>
+
         <div id="traj_cond">
           <h3> Mes trajets passés en tant que conducteur</h3>
           <?php
