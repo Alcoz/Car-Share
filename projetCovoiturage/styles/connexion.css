@@ -80,3 +80,14 @@ ul {
 	padding: 2%;
 	background-color: rgba(217,203,184,0.6);
 }
+
+
+.connect form input, .connect form label{
+	display: inline-block;
+
+}
+
+ .connect form #gauche{
+	 margin-right: 20px;
+	 width: 45%;
+ }

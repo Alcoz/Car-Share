@@ -39,12 +39,9 @@ session_start();
 
         </ul>
       </nav>
-    <?php
-    if (isset($_SESSION['id'])) {
-            echo "VOUS ETES CONNECTÉ EN TANT QUE :".$_SESSION['id'];
-    }
-     ?>
-    <div class="inscription">
+      <div id="corps_menu">
+      </div>
+    <div class="connect">
       <?php
         try{
           $pdo = new PDO('mysql:host=localhost;dbname=carshare;charset=utf8', 'root', '');
@@ -75,16 +72,24 @@ session_start();
           }
         }
 
-        echo "<h2>Inscription<h2>";
+        echo "<h2>Inscription</h2>";
         echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
-        echo "<input type='text' name='nom' \>";
-        echo "<input type='text' name='prenom' \>";
-        echo "<input type='number' name='age' \>";
-        echo "<input type='radio' name='SEXE' value='HOMME' id='HOMME' /> <label for='HOMME'>Homme</label><br />";
-        echo "<input type='radio' name='SEXE' value='FEMME' id='FEMME' /> <label for='FEMME'>Femme</label><br />";
-        echo "<input type='mail' name='mail'/>";
-        echo "<input type='password' name='mdp'/>";
+        echo "<div id=\"gauche\">";
+        echo "<label> Nom de famille : </label> <input type='text' name='nom' \>";
+        echo "<label> Prenom : </label> <input type='text' name='prenom' \>";
+        echo "<label> Age : </label> <input class=\"voila\" type='number' name='age' \>";
+
+
+        echo "<label> Adresse mail : </label> <input class=\"voila\" type='mail' name='mail'/>";
+        echo "<label> Mot de passe : </label> <input class=\"voila\"type='password' name='mdp'/>";
         echo "<input type='submit' value='Inscription'/>";
+        echo "</div>";
+
+        echo "<div id=\"droite\">";
+        echo "<input type='radio' name='SEXE' value='HOMME' id='HOMME' /> <label id=\"pute\" for='HOMME'>Homme</label><br />";
+        echo "<input type='radio' name='SEXE' value='FEMME' id='FEMME' /> <label id=\"pute\" for='FEMME'>Femme</label><br />";
+
+        echo "</div>";
       ?>
     </div>
   </body>

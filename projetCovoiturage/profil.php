@@ -253,22 +253,24 @@ session_start();
                                 $note = $_POST['note'];
                                 $comm = $_POST['commentaire'];
                                 $pdo->exec("INSERT INTO AVIS(ID_CONDUCTEUR, ID_PASSAGER, NOTES, COMMENTAIRE) VALUES(".$conducteur.",".$passager.",".$note.",\"".$comm."\");");
+                              } else {
+                                if ($tuples5 != null) {
+                                  echo "<div id=\"inscription\">";
+                                  echo $tuples5->NOTES;
+                                  echo $tuples5->COMMENTAIRE;
+                                  echo "</div>";
+                                }
+                                else{
+                                  echo "<div id=\"inscription\">";
+                                  echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
+                                  echo "<label> Notes </label> <input type='number' name='note' \>";
+                                  echo "<label> Commentaire</label> <input type='text' name='commentaire'/>";
+                                  echo "<input type='submit' value='commentaire'/>";
+                                  echo "</div>";
+                                }
                               }
 
-                              if ($tuples5 != null) {
-                                echo "<div id=\"inscription\">";
-                                echo $tuples5->NOTES;
-                                echo $tuples5->COMMENTAIRE;
-                                echo "</div>";
-                              }
-                              else{
-                                echo "<div id=\"inscription\">";
-                                echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
-                                echo "<label> Notes </label> <input type='number' name='note' \>";
-                                echo "<label> Commentaire</label> <input type='text' name='commentaire'/>";
-                                echo "<input type='submit' value='commentaire'/>";
-                                echo "</div>";
-                              }
+
 
                   echo "</div>";}
                   ?>
