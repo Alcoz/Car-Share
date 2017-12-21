@@ -76,18 +76,26 @@ session_start();
         echo "<form action=\"{$_SERVER['PHP_SELF']}\" method=\"post\">";
         echo "<div id=\"gauche\">";
         echo "<label> Nom de famille : </label> <input type='text' name='nom' \>";
-        echo "<label> Prenom : </label> <input type='text' name='prenom' \>";
-        echo "<label> Age : </label> <input class=\"voila\" type='number' name='age' \>";
-
-
-        echo "<label> Adresse mail : </label> <input class=\"voila\" type='mail' name='mail'/>";
-        echo "<label> Mot de passe : </label> <input class=\"voila\"type='password' name='mdp'/>";
-        echo "<input type='submit' value='Inscription'/>";
         echo "</div>";
-
+        echo "<div id=\"gauche\">";
+        echo "<label> Prenom : </label> <input type='text' name='prenom' \>";
+        echo "</div>";
         echo "<div id=\"droite\">";
-        echo "<input type='radio' name='SEXE' value='HOMME' id='HOMME' /> <label id=\"pute\" for='HOMME'>Homme</label><br />";
         echo "<input type='radio' name='SEXE' value='FEMME' id='FEMME' /> <label id=\"pute\" for='FEMME'>Femme</label><br />";
+        echo "<input type='radio' name='SEXE' value='HOMME' id='HOMME' /> <label id=\"pute\" for='HOMME'>Homme</label><br />";
+        echo "</div>";
+        echo "<div id=\"gauche\">";
+        echo "<label> Age : </label> <input class=\"voila\" type='number' name='age' \>";
+        echo "</div>";
+        echo "<div id=\"gauche\">";
+        echo "<label> Adresse mail : </label> <input class=\"voila\" type='mail' name='mail'/>";
+        echo "</div>";
+        echo "<div id=\"gauche\">";
+        echo "<label> Mot de passe : </label> <input class=\"voila\"type='password' name='mdp'/>";
+        echo "</div>";
+        echo "<div id=\"gauche\">";
+        echo "<input type='submit' value='Inscription'/>";
+
 
         echo "</div>";
       ?>
