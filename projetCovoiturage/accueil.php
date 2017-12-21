@@ -39,11 +39,6 @@ session_start();
 
         </ul>
       </nav>
-      <?php
-      if (isset($_SESSION['id'])) {
-              echo "VOUS ETES CONNECTÉ EN TANT QUE :".$_SESSION['id'];
-      }
-       ?>
       <img id="imagee" src="images/paysage.jpg"> </img>
       <h2> Monte dans la caisse putain </h2>
 
