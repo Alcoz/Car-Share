@@ -267,7 +267,7 @@ session_start();
                                   echo "<label> Commentaire</label> <input type='text' name='commentaire'/>";
                                   echo "<input type='submit' value='commentaire'/>";
                                   echo "</div>";
-                                }
+                                }   
                               }
 
 

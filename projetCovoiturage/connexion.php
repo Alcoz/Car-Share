@@ -39,11 +39,6 @@ session_start();
 
       </ul>
     </nav>
-    <?php
-    if (isset($_SESSION['id'])) {
-      echo "VOUS ETES CONNECTÉ EN TANT QUE :".$_SESSION['id'];
-    }
-    ?>
     <div id="corps_menu">
     </div>
     <div class="connect">
