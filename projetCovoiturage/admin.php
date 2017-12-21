@@ -67,16 +67,13 @@ session_start();
     <div class="carre" id="bite">
       <h3> Supprimer un Utilisateur </h3>
       <?php
-      if (isset($_POST['username'])) {
+      if (isset($_POST['suprr_ut'])) {
         $hommme_a_abbattre = $_POST['username'];
         echo "<p> Nous nous en sommes chargé </p>";
         $pdo->exec("DELETE FROM UTILISATEUR
                     WHERE ID_UTILISATEUR = \"$hommme_a_abbattre\";");
       }
       else {
-
-
-
       $query3 = $pdo->query("SELECT *
         FROM UTILISATEUR;");
 
@@ -84,7 +81,6 @@ session_start();
         ?>
         <form method="post" action="{$_SERVER['PHP_SELF']}" name="submit">
           <select name="username">
-            <option>-----Utilisateurs------</option>
 
             <?php
             foreach ($full_uti as $tuple) {
