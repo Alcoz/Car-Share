@@ -57,17 +57,24 @@ session_start();
           echo "<li> Nom :  $tuple->NOM </li>";
           echo "<li> Age:  $tuple->AGE </li>";
           echo "<li> Mail :  $tuple->MAIL </li>";
-          echo "<li> Note : ";
-          $pdo->exec("CALL moyenne (1, @notes);  SELECT @notes");
-          echo "</li>";
-
+          $moy = $pdo->query("CALL Moyenne($id);");
+          $moy1 = $moy->fetch();
+          if (empty($moy1)) {
+            echo "vous n'avez pas assez d'avis";
+          }
+          else {
+            echo "<li> Note : ".$moy1["MOY"];
+          }
+          $moy->closeCursor();
         }
+
         ?>
       </ul>
     </div>
     <div id="avis">
       <h3> Vos avis </h3>
       <?php
+
       $query2 = $pdo->query("SELECT *
         FROM AVIS
         WHERE ID_CONDUCTEUR = \"$id\" ;");
@@ -246,7 +253,7 @@ session_start();
                                 $note = $_POST['note'];
                                 $comm = $_POST['commentaire'];
                                 $pdo->exec("INSERT INTO AVIS(ID_CONDUCTEUR, ID_PASSAGER, NOTES, COMMENTAIRE) VALUES(".$conducteur.",".$passager.",".$note.",\"".$comm."\");");
-                              }else {
+                              } else {
                                 if ($tuples5 != null) {
                                   echo "<div id=\"inscription\">";
                                   echo $tuples5->NOTES;
