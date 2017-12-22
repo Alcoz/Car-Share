@@ -1,3 +1,7 @@
+/*
+  21503877 Darnala Baptiste
+  20140442 Eliott Duverger
+*/
 
 DROP TRIGGER IF EXISTS prix_abuse;
 DROP TRIGGER IF EXISTS traj_complet;
@@ -7,7 +11,7 @@ DROP TRIGGER IF EXISTS traj_complet;
 DROP PROCEDURE IF EXISTS moyenne;
 
 DELIMITER |
-CREATE PROCEDURE moyenne (uti_id INT, OUT notes INT)
+CREATE PROCEDURE moyenne (IN uti_id INT)
 BEGIN
     SELECT AVG(NOTES) INTO notes
     FROM UTILISATEUR, AVIS
@@ -34,6 +38,7 @@ DELIMITER |
 CREATE TRIGGER traj_complet BEFORE UPDATE
 ON TRAJET FOR EACH ROW
 BEGIN
+
     IF NEW.NB_PLACE = 0
       THEN
         SET NEW.DISPONIBLE = FALSE;
